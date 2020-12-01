@@ -1,0 +1,38 @@
+﻿
+.kartim {
+    -webkit-box-shadow: 0px -1px 14px -5px rgba(0,0,0,1);
+    -moz-box-shadow: 0px -1px 14px -5px rgba(0,0,0,1);
+    box-shadow: 0px -1px 14px -5px rgba(0,0,0,1);
+}
+    .kartim:hover {
+        color: #37474F;
+        transition: 0.8s;
+        border-radius: 10px;
+    }
+
+.yazifontum {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color:#90A4AE;
+text-justify: auto;
+justify-content: center;
+}
+
+.yazifontum:hover {
+    transition: 0.4s;
+        color: #37474F;
+     
+    }
+.yazifontumBaslik {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    color: #607D8B;
+    transition: 0.4s;
+}
+.yazifontumBaslik:hover{
+    color: #37474F;
+    }
+.cardfooter{
+    font-family:Cambria; 
+    font-size:12px; 
+    text-align:right;
+}

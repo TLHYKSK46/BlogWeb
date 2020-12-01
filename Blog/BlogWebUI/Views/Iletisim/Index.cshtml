@@ -1,0 +1,129 @@
+﻿
+@model BlogWebUI.Models.IletisimModelView
+@{
+    ViewData["Title"] = "İletişim Bilgileri";
+}
+<script type="text/javascript">
+function Temizle(){
+ //alert("Form temizlenecek");
+ document.forms[0].reset();
+}
+</script>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        İletişim
+        <small>Bilgilerim</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item active">İletişim</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Map Column -->
+        <div class="col-lg-8 mb-4">
+            <!-- Embedded Google Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1529.8304100672067!2d32.822493!3d39.926606!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x975e90b2cf7d2d48!2sMado%20Emek!5e0!3m2!1str!2str!4v1594989677394!5m2!1str!2str" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+            <h3>iletişim Detayları</h3>
+            <p>
+                Bahçelievler,Emek
+                <br>Ankara, Türkiye-2020
+                <br>
+            </p>
+            <p>
+                <abbr title="Phone">Telefon</abbr>: (123) 456-7890
+            </p>
+            <p>
+                <abbr title="Email">Email</abbr>:
+                <a href="mailto:name@example.com">
+                    name@example.com
+                </a>
+            </p>
+            <p>
+                <abbr title="Hours">Tarih</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Contact Form -->
+    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact-form", action = "" }))
+    {
+
+
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <h3>Bana Mesaj Gönder..</h3>
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label><span class="text-danger">*</span>Ad Soyad:</label>
+                            @*<input type="text" class="form-control" name="AdSoyad" id="name">*@
+                            @Html.TextBoxFor(m => m.AdSoyad, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.AdSoyad, "", new { @class = "text-danger" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <span class="text-danger">*</span><label>Konu:</label>
+                            @*<input type="text" class="form-control" name="Konu" id="phone" required data-validation-required-message="Lütfen Konuyu Belirtiniz .">*@
+                            @Html.TextBoxFor(m => m.Konu, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Konu, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label><span class="text-danger">*</span>Email:</label>
+                            @*<input type="email" class="form-control" name="Email" id="email" required data-validation-required-message="Lütfen Mail Adresinizi Belirtiniz.">*@
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label><span class="text-danger">*</span>Mesajınız</label>
+                            @*<textarea rows="10" cols="100" class="form-control" name="Mesaj" id="message" required data-validation-required-message="Lütfen Mesajınızı Yazınız.." maxlength="999" style="resize:none"></textarea>*@
+                            @Html.TextAreaFor(m => m.Mesaj, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Mesaj, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div id="success"></div>
+                    <!-- For success/fail messages -->
+                    @if (ViewBag.MailGonderildiMi == true)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            Mesajınız başarıyla gönderilmiştir.En kısa zamanda Size Geri Dönüş Yapılacaktır...
+
+                        </div>
+                        <span> Temizle();</span>
+
+
+                    }
+                    @*else
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                Hata! Mesajınız Gönderilemedi!
+                            </div>
+                        }*@
+                    <button type="submit" class="btn btn-danger float-right" id="sendMessageButton">Gönder</button>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    }
+
+</div>
+<!-- /.container -->

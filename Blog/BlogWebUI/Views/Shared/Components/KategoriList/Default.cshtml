@@ -1,0 +1,35 @@
+﻿@model BlogWebUI.Models.KategoriListViewModel
+
+@{
+}
+    <div class="card my-2 kartim">
+        <h5 class="card-header">Kategoriler</h5>
+
+        @{
+            @foreach (var item in Model.Kategoriler)
+            {
+                var KategoriMakaleSayisi = Model.Makaleler.Where(i => i.KategoriId == item.KategoriId).Count();
+
+                var css = "list-group-item list-group-item-action list-group-item-action  ";
+                var cssbadge = "badge badge-danger float-right ";
+                if (item.KategoriId == Model.seciliOlanKategori)
+                {
+                    css += "active list-group-item-danger ";
+                    cssbadge = "badge badge-light float-right ";
+
+                }
+                <ul class="list-group list-group-flush float-right">
+                    <a href="/home/index?kategoriId=@item.KategoriId" class="text-decoration-none" style="margin-top:0">
+
+                        <li class="@css">
+
+                            @item.KategoriAdi <span class="@cssbadge">@KategoriMakaleSayisi</span>
+
+                        </li>
+                    </a>
+                </ul>
+            }
+        }
+
+
+    </div>

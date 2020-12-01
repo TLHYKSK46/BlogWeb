@@ -1,0 +1,94 @@
+﻿@*model BlogumUI.Models.MakaleListViewModel*@
+@model BlogWebUI.Models.HakkimdaModel
+@{
+    ViewData["Title"] = "Hakkimda";
+}
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Ben
+        <small>Kimim?</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="" asp-controller="Home" asp-action="index">Anasayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Hakkimda</li>
+    </ol>
+    <hr />
+    <div class="row">
+        @{
+
+            var kulFoto = (from foto in Model.SuperAdmin where foto.KullaniciId == 1 select foto.FotoUrl).ToList();
+            var kulAdi = (from kuladi in Model.SuperAdmin where kuladi.KullaniciId == 1 select kuladi.KulAdSoyad).ToList();
+
+            <div class="col-md-4 ">
+                @await Component.InvokeAsync("ProfilKart");
+            </div>
+            <div class="col-md-8  ">
+
+                <div class="wrapper">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                            <label for="tab-1" class="tab-label">Deneyim</label>
+                            <div class="tab-content">
+                                @foreach (var item in Model.Deneyimler)
+                                {
+                                <span class="cvlist"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;@item.ToString()</span> <br />
+                                }
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+                            <label for="tab-3" class="tab-label">Beceriler</label>
+                            <div class="tab-content">
+                                @foreach (var item in Model.Beceriler)
+                                {
+                                <span class="cvlist"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;@item.ToString() </span><br />
+                                }
+
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+                            <label for="tab-2" class="tab-label">Eğitim</label>
+                            <div class="tab-content">
+                                @foreach (var item in Model.Egitimler)
+                                {
+                                <span class="cvlist"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;@item.ToString()</span>  <br />
+                                }
+                            </div>
+                        </div>
+
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-4" class="tab-switch">
+                            <label for="tab-4" class="tab-label">Hobiler</label>
+                            <div class="tab-content">
+                                @foreach (var item in Model.Hobiler)
+                                {
+                                <span class="cvlist"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;@item.ToString()</span>  <br />
+                                }
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-5" class="tab-switch">
+                            <label for="tab-5" class="tab-label">Sertifikalar&Ödüller</label>
+                            <div class="tab-content">
+                                @foreach (var item in Model.Oduller)
+                                {
+                                <span class="cvlist"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>&nbsp;@item.ToString()</span>  <br />
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @*////////////////////////////////////////*@
+
+            </div>
+        }
+    </div>
+
+
+</div>

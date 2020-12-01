@@ -1,0 +1,92 @@
+﻿@model BlogWebUI.Models.SliderListViewModel
+@{
+}
+<div id="Slider" class="carousel slide kartim" data-ride="carousel">
+    <ol class="carousel-indicators rounded">
+        @{
+            int sayac = 0;
+            foreach (var item in Model.Makaleler)
+            {
+                if (sayac == 0)
+                {
+                    <li data-target="#Slider" data-slide-to="@sayac" class="active"></li>
+                }
+                else if (sayac >= 5)
+                {
+                    break;
+                }
+                else
+                {
+                    <li data-target="#Slider" data-slide-to="@sayac"></li>
+                }
+                sayac++;
+
+            }
+
+        }
+
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        @{
+            int say = 0;
+            var top5 = (from i in Model.Makaleler orderby i.MakaleYayinlanmaTarihi descending select i).Take(5).ToList();
+            foreach (var item in top5)
+            {
+                if (say == 0)
+                {
+
+                    <div class="carousel-item active " style=" background-image: url(''); color:dimgrey">
+
+                        <img src="~/images/MakaleFoto/@item.MakaleFotoUrl" width="1900" height="1080" />
+                        <div class="carousel-caption d-none d-md-block carousel-caption alert-dark text-dark rounded" style="opacity:0.8;">
+                            <h3 class="card-header" style="opacity:1.0;">@item.MakaleBaslik</h3>
+                            @if (item.MakaleIcerik.Length > 150)
+                            {
+                                <p style="opacity:1.0;">@item.MakaleIcerik.Substring(0, 150)...</p>
+
+                            }
+                            else
+                            {
+                                <p style="opacity:1.0;">@item.MakaleIcerik</p>
+
+                            }
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="carousel-item" style="background-image: url('');color:dimgrey;">
+                        <img src="~/images/MakaleFoto/@item.MakaleFotoUrl" width="1900" height="1080" />
+                        <div class="carousel-caption d-none d-md-block alert-dark  text-dark rounded" style="opacity:0.8;">
+                            <h3 style="opacity:1;" class="card-header">@item.MakaleBaslik</h3>
+                            @if (item.MakaleIcerik.Length > 150)
+                            {
+                                <p style="opacity:1;">@item.MakaleIcerik.Substring(0, 150)...</p>
+
+                            }
+                            else
+                            {
+                                <p style="opacity:1;">@item.MakaleIcerik</p>
+
+                            }
+                          
+                        </div>
+                    </div>
+                }
+                say++;
+
+            }
+
+        }
+    </div>
+
+    <a class="carousel-control-prev" href="#Slider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#Slider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

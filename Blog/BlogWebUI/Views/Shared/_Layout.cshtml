@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blogum</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/modern-business.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap core CSS -->
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="~/css/modern-business.css" />
+    <link href="~/css/sosyalbutonlar.css" rel="stylesheet" />
+    <link href="~/css/Search-box.css" rel="stylesheet" />
+    <link href="~/css/Card.css" rel="stylesheet" />
+    <link href="~/css/Login-btn.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/ProfilKart.css" rel="stylesheet" />
+    <link href="~/css/tabpanel.css" rel="stylesheet" />
+</head>
+@*#E0F2F1;*@
+<body style="background-color:teal; ">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Start Blog</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="search-box">
+                        @*<input class="search-text" type="text" name="" placeholder="Buraya yaz....">*@
+                        @Html.TextBox("Buraya Yaz...", "", new { @class = "search-text", @placeholder = "Buraya Yaz..." })
+                        <button type="submit" class="search-btn btn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="index">Anasayfa</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-area="" asp-controller="Hakkimda" asp-action="index">Hakkımda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Referans" asp-action="index">Referanslarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Iletisim" asp-action="index">İletişim</a>
+                    </li>
+
+                    <li>
+                        <a href="Admin/AdminGiris" class="login-btn">Giriş Yap</a>
+                    </li>
+                    <li class="sosyalbutonlar">
+                        <a href="https://twitter.com/talhayksk" target="_blank" class="twitter"><i class="fa fa-twitter fa-stack-lg" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/talha-yüksek-67b761171/" target="_blank" class="linkedin"><i class="fa fa-linkedin fa-stack-lg" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/channel/UC3v-LG-bqlCtwLEs0pa0w0Q?view_as=subscriber" target="_blank" class="youtube"><i class="fa fa-youtube fa-stack-lg" aria-hidden="true"></i></a>
+                        <a href="https://github.com/TLHYKSK46" target="_blank" class="github"><i class="fa fa-github fa-stack-lg" aria-hidden="true"></i></a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+
+
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+
+            <p class="m-0 text-center text-white">Copyright &copy; Blogum 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.min.js" asp-append-version="true"></script>
+
+
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - Blogum - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

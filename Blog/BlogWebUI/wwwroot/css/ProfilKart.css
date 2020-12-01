@@ -1,0 +1,71 @@
+﻿.profilkartim {
+   align-content:center;
+   
+
+}
+    .profilkartim:hover {
+    transition:0.8s;
+/*cursor:alias;
+
+opacity:0.7;*/
+    }
+    .profilkartim::before {
+        transition: 0.8s;
+        border-radius: 0px;
+    }
+.profilkartimimg {
+    margin-left:30%;
+    margin-right:30%; 
+   margin-top:30px;
+  
+}
+    .profilkartimimg:hover {
+        transition: 0.4s;
+        opacity: 0.9;
+        -webkit-box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+        -moz-box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+        box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+    }
+
+.card-body .profilkartimlist {
+  width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    padding: 2px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 20px;
+    transform: translateX(-50%) rotate(45deg);
+    background-color: brown;
+}
+.card-body profilkartimlist:hover {
+  
+}
+.prrofilkartimyazi {
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
+}
+    .prrofilkartimyazi a {
+    text-decoration:none;
+    color:black;
+    }
+.prrofilkartimyazi:hover{
+    
+    transition: 0.8s;
+    border-radius:10px;
+    -webkit-box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+    -moz-box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+    box-shadow: -1px 3px 40px -4px rgba(148,8,19,1);
+}
+
+.profilkartimUl {
+    text-align: center;
+    align-content: center;
+}
+.profilkartimfooter {
+    /*background-color: #b71c1c;*/
+    margin: -1px;
+    cursor: alias;
+}
+.profilsosyalikonlar {
+}

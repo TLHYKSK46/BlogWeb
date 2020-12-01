@@ -1,0 +1,194 @@
+﻿@model BlogWebUI.Models.MakaleListViewModel
+@addTagHelper "*,Microsoft.AspNetCore.Mvc.TagHelpers"
+@addTagHelper "*,BlogumUI"
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+ 
+    
+    <link href="~/css/Card.css" rel="stylesheet" />
+
+    <header>
+        @* Slider bu View Component içerisinde... *@
+        @await Component.InvokeAsync("SliderList")
+          </header>
+    <h1 class="my-4 text-center">Hoş Geldiniz Bloguma!</h1>
+    <!-- Portfolio Section -->
+    <div class="row ">
+
+
+        <div class="col-md-9 ">
+
+            @{
+                var listorder = (from i in Model.Makaleler orderby i.MakaleYayinlanmaTarihi descending select i).Take(10).ToList();
+
+                foreach (var item in listorder)
+                {
+
+                    var yorumcount = Model.Yorumlar.Where(i => i.MakaleId == item.MakaleId).Count();
+
+
+                    using (Html.BeginForm("MakaleIcerik", "Home", new { id = item.MakaleId }, FormMethod.Post))
+                    {
+                        //var yorumSayisi = (from i in Model.Yorumlar where item.MakaleId == i.MakaleId select i).Count();
+
+
+                        <div class="col-12">
+                            <!-- Blog Post -->
+                            <div class="card mb-4 kartim rounded">
+                                @*Button
+                                <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3">
+                                    <i class="fa fa-chevron-circle-right pl-1"></i>
+                                </a>*@
+
+                                <div class="card-body ">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+
+
+                                            @if (item.MakaleFotoUrl != null)
+                                            {
+                                                <img class="img-fluid rounded" src="~/images/MakaleFoto/@item.MakaleFotoUrl" width="750" height="300" alt="">
+
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/MakaleFoto/resimyokaspcore.png" class="img-fluid rounded " style="width:750px;height:300px; " />
+                                                //<img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+                                            }
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <h2 class="yazifontumBaslik card-title">@Html.DisplayFor(modelitem => item.MakaleBaslik)</h2><span class="icon"></span>
+                                            @if (item.MakaleIcerik.Length > 500)
+                                            {
+                                                <p class="yazifontum card-text ">@item.MakaleIcerik.Substring(0, 500)...</p>
+
+                                            }
+                                            else
+                                            {
+                                                <p class="yazifontum card-text ">@item.MakaleIcerik</p>
+
+                                            }
+                                    
+                                            <input class="btn btn-danger float-md-right align-bottom" type="submit" value="devamı&rarr;" name="MakaleicerikGönder" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer cardfooter rounded  bg-light pt-3  text-muted float-right no-padding">
+                                    <span href="#" class="float-left" style="margin:2px;">
+                                        @{var kulFoto = (from foto in Model.Kullanicilar where foto.KullaniciId == item.KullaniciId select foto.FotoUrl).ToList();
+                                            <img class="rounded-circle" src="~/images/KulFoto/@kulFoto.FirstOrDefault()" width="32" height="32" style="margin:0px;" />
+                                            foreach (var kul in Model.Kullanicilar)
+                                            {
+                                                if (item.KullaniciId.Equals(kul.KullaniciId))
+                                                {
+                                                    <span style=" margin-left:1px;"> @kul.KulAdSoyad  </span>
+                                                }
+                                            }
+                                        }
+                                    </span>
+                                    <span href="#" style="margin-right:20px;">
+
+                                        <i class="fa fa-folder-open-o fa-lg" aria-hidden="true"></i>
+
+                                        @foreach (var i in Model.Kategoriler)
+                                            if (i.KategoriId.Equals(item.KategoriId))
+                                            {@i.KategoriAdi}
+                                    </span>&nbsp;
+                                    <span href="#" style="margin-right:20px;">
+
+                                        <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+                                        @Html.DisplayFor(modelitem => item.MakaleOkunmaSayisi)
+                                    </span>&nbsp;
+                                    <span href="#" style="margin-right:20px;">
+
+                                        <i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i>
+                                        @yorumcount
+                                    </span>&nbsp;
+
+                                    <span>
+                                        <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>@*.ToString("dddd, dd MMMM yyyy")*@
+                                        @Html.DisplayFor(modelitem => item.MakaleYayinlanmaTarihi)
+                                    </span>&nbsp;
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+            <!-- Pagination -->
+            @*<ul class="pagination justify-content-center mb-6 m-5 ">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Önceki</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Sonraki &rarr;</a>
+                </li>
+            </ul>*@
+            <makale-list-sayfa secili-kategori="@Model.SeciliKategori"
+                               secili-sayfa="@Model.SeciliSayfa"
+                               sayfa-sayisi="@Model.SayfaSayisi"
+                               sayfa-boyut="@Model.SayfaBoyut"></makale-list-sayfa>
+        </div>
+ 
+
+        <!-- Sidebar Widgets Column -->
+        <div class=" col-md-3 ">
+            <!-- Profil Kart Widgets Column -->
+            @await Component.InvokeAsync("ProfilKart")
+            <!-- Profil Kart Widgets Column -->
+            @{
+
+                var aramaSorgusu = (from i in Model.Makaleler select i);
+                <!-- Search Widget -->
+                <div class="card mb-4  kartim" style="margin-top:10px;">
+                    <h5 class="card-header">Arama</h5>
+                    <div class="card-body">
+                        @*@using (Html.BeginForm("index", "Home",  FormMethod.Post)){*@
+                        <div class="input-group">
+                            @*<input type="text" class="form-control" placeholder="Buraya yazınız...">*@
+                            @Html.TextBox("Buraya Yaz...", "", new { @class = "form-control", @placeholder = "Buraya Yaz..." })
+                            <span class="input-group-append">
+                                <button class="btn btn-danger" type="submit">
+                                    <img src="~/images/icons-1.0.0-alpha5/icons/search.svg" />
+                                </button>
+                            </span>
+                        </div>
+                        @*}*@
+                    </div>
+                </div>
+
+                <!-- Categories Widget -->
+                @await Component.InvokeAsync("KategoriList")
+                <!-- Side Widget -->
+                <div class="card my-4 kartim">
+                    <h5 class="card-header">Side Widget</h5>
+                    <div class="card-body">
+                        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+                            <!-- /.row -->
+                            <!-- /.row -->
+                            <!-- Features Section -->
+                            <!-- /.row -->
+
+                            <hr>
+
+                            <!-- Call to Action Section -->
+                            <div class="row mb-4">
+                                <div class="col-md-8">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+                                </div>
+                            </div>
+
+

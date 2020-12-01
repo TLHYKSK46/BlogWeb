@@ -1,0 +1,50 @@
+﻿@model BlogWebUI.Models.ReferansViewModel
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<!-- Page Content -->
+<div class="container">
+    @{
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-md-4 mb-md-3">
+            Proje
+            <small>Çalışmalarım</small>
+        </h1>
+        
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-area="" asp-controller="Home" asp-action="index">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item active">Referanslar</li>
+        </ol>
+
+        <div class="row">
+            @foreach (var item in Model.Referans)
+            {
+                <div class="col-md-4 mb-md-4  ">
+                    <div class="card h-100 text-center kartim">
+
+                        <img class="card-img-top kartim" src="~/images/ProjeFoto/@item.ProjeFoto" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.ProjeAdi</h4>
+                            <h6 class="card-subtitle mb-md-2 text-muted" style="font-size:12px;">@item.ProjedeKullanilanTeknolojiler</h6>
+                            <p class="card-text">@item.ProjeTanim</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <span class="" style="font-size:12px;float:left; vertical-align:bottom;">@item.ProjeTarih</span>
+                            <input class="btn btn-danger float-md-right" type="submit" value="Detay&rarr;" name="ProjeIcerikGönder" />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+        </div>
+        <!-- /.row -->
+    }
+</div>
+<!-- /.container -->
