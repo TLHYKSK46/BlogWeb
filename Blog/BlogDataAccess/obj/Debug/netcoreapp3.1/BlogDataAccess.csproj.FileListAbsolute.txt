@@ -1,0 +1,17 @@
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.csprojAssemblyReference.cache
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.AssemblyInfoInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.AssemblyInfo.cs
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.csproj.CoreCompileInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogCore.dll
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogEntities.dll
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogEntities.pdb
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogDataAccess.deps.json
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogDataAccess.runtimeconfig.json
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogDataAccess.runtimeconfig.dev.json
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogDataAccess.dll
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogDataAccess.pdb
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\bin\Debug\netcoreapp3.1\BlogCore.pdb
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.csproj.CopyComplete
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.dll
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.pdb
+D:\GitHub\BlogWebs\Blog\BlogDataAccess\obj\Debug\netcoreapp3.1\BlogDataAccess.genruntimeconfig.cache

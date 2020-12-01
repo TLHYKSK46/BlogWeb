@@ -1,0 +1,16 @@
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogBusiness.deps.json
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogBusiness.dll
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.csprojAssemblyReference.cache
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.AssemblyInfoInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.AssemblyInfo.cs
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.csproj.CoreCompileInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogBusiness.pdb
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogCore.dll
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogDataAccess.dll
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogEntities.dll
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogDataAccess.pdb
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogEntities.pdb
+D:\GitHub\BlogWebs\Blog\BlogBusiness\bin\Debug\netcoreapp3.1\BlogCore.pdb
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.csproj.CopyComplete
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.dll
+D:\GitHub\BlogWebs\Blog\BlogBusiness\obj\Debug\netcoreapp3.1\BlogBusiness.pdb

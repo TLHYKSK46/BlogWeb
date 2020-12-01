@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BlogEntities.Concreate;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BlogBusiness.Abstract
 {
-   public class IIletisimServis
+   public interface IIletisimServis
     {
         List<Iletisim> IletisimBilgileriniGetir();
         List<Iletisim> IletisimGetir(int IletisimId);

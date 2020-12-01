@@ -1,0 +1,15 @@
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogCore.deps.json
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogCore.dll
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.csprojAssemblyReference.cache
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.AssemblyInfoInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.AssemblyInfo.cs
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogCore.runtimeconfig.json
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogCore.runtimeconfig.dev.json
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.genruntimeconfig.cache
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.csproj.CoreCompileInputs.cache
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogCore.pdb
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogEntities.dll
+D:\GitHub\BlogWebs\Blog\BlogCore\bin\Debug\netcoreapp3.1\BlogEntities.pdb
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.csproj.CopyComplete
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.dll
+D:\GitHub\BlogWebs\Blog\BlogCore\obj\Debug\netcoreapp3.1\BlogCore.pdb

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BlogEntities.Concreate;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BlogBusiness.Abstract
 {
-    public class IKategoriServis
+    public interface IKategoriServis
     {
         List<Kategori> KategorileriGetir();
         List<Kategori> KategoriGetir(int KategoriId);

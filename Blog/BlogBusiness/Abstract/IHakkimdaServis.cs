@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BlogEntities.Concreate;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BlogBusiness.Abstract
 {
-   public class IHakkimdaServis
+   public interface IHakkimdaServis
     {
         List<Hakkimda> HakkimdaGetir();
         List<Hakkimda> HakkimdaGetir(int HakkimdaId);
