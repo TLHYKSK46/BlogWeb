@@ -1,0 +1,44 @@
+﻿@model BlogWebUI.Areas.Admin.Models.SolMenuViewCompenentModel
+
+@{
+
+    <!-- LEFT SIDEBAR -->
+    <div id="sidebar-nav" class="sidebar">
+        <div class="sidebar-scroll">
+            <nav>
+                <ul class="nav">
+                    <li><a href="~/Admin/AdminHome" class="active"><i class="lnr lnr-home"></i> <span>AnaSayfa</span></a></li>
+                    @if (Model.RolId == 1 || Model.RolId == 2)
+                    {
+                        <li><a href="~/Admin/AdminMakale" class=""><i class="lnr lnr-pencil"></i> <span>Makale</span></a></li>
+                    }
+                    @if (Model.RolId == 1)
+                    {
+                        <li><a href="~/Admin/AdminKategori" class=""><i class="lnr lnr-bookmark"></i> <span>Kategori</span></a></li>
+                        <li><a href="~/Admin/AdminKullanici" class=""><i class="lnr lnr-users"></i> <span>Kullanıcılar</span></a></li>
+                    }
+
+                    @if (Model.RolId == 1 || Model.RolId == 2)
+                    {
+                        <li><a href="notifications.html" class=""><i class="lnr lnr-envelope"></i> <span>Mail</span></a></li>
+                    }
+                        @*<li>
+                            <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subPages" class="collapse ">
+                                <ul class="nav">
+                                    <li><a href="page-profile.html" class="">Profile</a></li>
+                                    <li><a href="page-login.html" class="">Login</a></li>
+                                    <li><a href="page-lockscreen.html" class="">Lockscreen</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
+                        <li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
+                        <li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>*@
+                    </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- END LEFT SIDEBAR -->
+}
+

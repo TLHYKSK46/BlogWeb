@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@{
+    Layout = "_LayoutGiris";
+}
+<!-- WRAPPER -->
+<div id="wrapper">
+    <div class="vertical-align-wrap">
+        <div class="vertical-align-middle">
+            <div class="auth-box ">
+                <div class="left">
+                    <div class="content">
+                        <div class="header">
+                            <div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
+                            <p class="lead">Hasabınıza Giriş Yapınız</p>
+                        </div>
+                        @using (Html.BeginForm("index", "AdminGiris", new { area = "", @class = "form-control" }, FormMethod.Post))
+                        {
+                            
+                                <div class="form-group">
+                                    <label for="signin-email" class="control-label sr-only">Email</label>
+
+                                    @Html.TextBox("email", "", new { @class = "form-control", @placeholder = "Email", Type = "email", @id = "signin-email" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin-password" class="control-label sr-only">Password</label>
+
+                                    @Html.TextBox("parola", "", new { @class = "form-control", @placeholder = "Parola", Type = "password", @id = "signin-password" })
+                                </div>
+                                <div class="form-group clearfix">
+                                    @*@Html.CheckBox("chkBeniHatirla", false, new { @value = "Beni Hatırla" })&nbsp;Beni Hatırla*@
+                                    @*<label class="fancy-checkbox element-left">
+                        <input type="checkbox">
+                        <span>Beni Hatırla</span>
+
+                    </label>*@
+
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Oturum Aç</button>
+                                <div class="bottom">
+                                    <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Paralonızı mı Unuttunuz?</a></span>
+                                </div>
+                      
+                        }
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="overlay"></div>
+                    <div class="content text">
+                        <h1 class="heading">Hesabınız Yokmu? Hemen Üye Ol!</h1>
+                        <p>by The Develovers</p>
+                        
+                            
+                        <a class="btn btn-primary btn-lg btn-block" href="/Admin/AdminGiris/KayitOl">KayitOl</a>
+
+
+                      
+                        
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END WRAPPER -->

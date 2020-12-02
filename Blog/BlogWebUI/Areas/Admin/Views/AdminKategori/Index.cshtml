@@ -1,0 +1,44 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminKategoriViewModel
+
+@{
+}
+@{
+    <!-- TABLE HOVER -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Kategori İşlemleri</h3>
+        </div>
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;Yeni Kategori Oluştur</button>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Foto</th>
+                        <th>Kategori Adı</th>
+                        <th>Açıklama</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Kategori)
+                    {
+                    <tr>
+
+                        <td>@item.KategoriId</td>
+                        <td>@item.KategoriImg</td>
+                        <td>@item.KategoriAdi</td>
+                        <td>@item.KategoriAciklama</td>
+                        <td><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                        <td><button type="button" class="btn btn-danger"><span class="lnr lnr-trash"></span></button></td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END TABLE HOVER -->
+    }

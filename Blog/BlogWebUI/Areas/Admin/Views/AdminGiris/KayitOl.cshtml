@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutGiris";
+}
+<!-- WRAPPER -->
+<div id="wrapper">
+    <div class="vertical-align-wrap">
+        <div class="vertical-align-middle">
+            <div class="auth-box ">
+                <div class="left">
+                    <div class="content">
+                        <div class="header">
+                            <div class="logo text-center"><img src="~/img/logo-dark.png" alt="Klorofil Logo"></div>
+                            <p class="lead">Bilgilerinizi Doldurunuz.</p>
+                        </div>
+                        @using(Html.BeginForm("KayitOl", "AdminGiris", new{area="",@class="form-control"},FormMethod.Post)) {
+
+
+                            <div class="form-group">
+                                <label for="signin-email" class="control-label sr-only">Email</label>
+                                @Html.TextBox("adsoyad", "", new { @class = "form-control", @placeholder = "Ad Soyad", @id = "signin-name" })
+                            </div>
+                            <div class="form-group">
+                                <label for="signin-email" class="control-label sr-only">Email</label>
+                                @Html.TextBox("email", "", new { @class = "form-control", @placeholder = "Email",Type="email", @id = "signin-email" })
+                            </div>
+                            <div class="form-group">
+                                <label for="signin-password" class="control-label sr-only">Password</label>
+
+                                @Html.TextBox("parola", "", new { @class = "form-control", @placeholder = "Parola",Type="password", @id = "signin-password" })
+                            </div>
+                            <div class="custom-file">
+                                <label class="custom-file-label float-left" asp-for="customFile">Profil Fotografı Seçiniz</label>
+                                <input type="file" class="custom-file-input" id="customFile">
+                                
+
+                            </div>
+                            <button type="submit"  class="btn btn-primary btn-lg btn-block">Kayıt Ol</button>
+                              }
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="overlay"></div>
+                    <div class="content text">
+                        <h1 class="heading">Hesabınız Yokmu? Hemen Üye Ol!</h1>
+                        <p>by The Develovers</p>
+                        <a class="btn btn-primary btn-lg btn-block" href="/Admin/AdminGiris/index">Giris Yap</a>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END WRAPPER -->

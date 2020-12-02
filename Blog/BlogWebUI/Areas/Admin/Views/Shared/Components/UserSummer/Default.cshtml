@@ -1,0 +1,45 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminUserSummerViewCompenentModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    if (!string.IsNullOrEmpty(Model.Email))
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="~/images/KulFoto/@Model.FotoUrl" class="img-circle" width="24" height="24" alt=""> <span>@Model.AdSoyad</span> <i class="icon-submenu lnr lnr-chevron-down"></i>
+            </a>
+
+
+            <ul class="dropdown-menu">
+                <li><a href="#"><i class="lnr lnr-user"></i> <span>Profilim</span></a></li>
+                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Mesajlarım</span></a></li>
+                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Ayarlar</span></a></li>
+                <li><a href="~/Admin/AdminGiris/LogOff"><i class="lnr lnr-exit"></i> <span>Çıkış</span></a></li>
+
+            </ul>
+        </li>
+        //onclick = "location.href='@Url.Action("Kay", "AdminGiris")'"
+    }
+    else
+    {
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="~/images/KulFoto/user-50.jpg" class="img-circle" alt=""> <span>@Model.AdSoyad</span> <i class="icon-submenu lnr lnr-chevron-down"></i>
+            </a>
+
+
+            <ul class="dropdown-menu">
+                <li><a href="#"><i class="lnr lnr-user"></i> <span>Profilim</span></a></li>
+                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Mesajlarım</span></a></li>
+                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Ayarlar</span></a></li>
+                <li><a href="~/Admin/AdminGiris/LogOff"><i class="lnr lnr-exit"></i> <span>Çıkış</span></a></li>
+
+            </ul>
+        </li>
+
+    }
+}
+
