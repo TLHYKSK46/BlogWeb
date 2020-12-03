@@ -48,7 +48,7 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
 
 
-                    return Redirect("/Admin/AdminHome/index");
+                    return RedirectToAction("index", "AdminHome");
 
                 }
                 else
@@ -94,10 +94,10 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
 
                 _kullaniciServis.Ekle(kullanici);
-                return RedirectToAction("AdminGiris", "Admin");
+                return RedirectToAction("index", "AdminGiris");
 
             }
-            return Redirect("/Admin/AdminGiris/KayitOl");
+            return RedirectToAction("KayitOl", "AdminGiris");
 
 
         }

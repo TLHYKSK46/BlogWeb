@@ -920,3 +920,4 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\staticwebassets\BlogWeb
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.dll
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.pdb
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.genruntimeconfig.cache
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminKategori\KategoriOlustur.cshtml.g.cs

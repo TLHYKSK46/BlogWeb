@@ -1,0 +1,46 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminKategoriViewModel
+@{
+}
+@{
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Yeni Kategori Ekle</h3>
+        </div>
+        <div class="panel-body ">
+
+
+            @using (Html.BeginForm("KategoriOlustur", "AdminKategori", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
+            {
+                @*<img src="~/images/KulFoto/@Model" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
+
+            <input type="file" class="form-control">
+            <br />*@
+
+                @*@Html.ValidationSummary(true)*@
+
+
+                @Html.TextBox("KategoriAdi", "", new { @class = "form-control", @placeholder = "Kategori Adı " })
+                <br>
+                @Html.TextArea("KategoriAciklama", "", new { @class = "form-control", @placeholder = "Kategori Açıklama" })
+                <br>
+                <input type="file" class="form-control">
+                <br>
+
+
+                <br>
+
+                <button type="submit" class="btn btn-primary btn-lg ">Kaydet</button>
+                @*<button type="submit" name="id" value="@Model.Kullanici.KullaniciId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>*@
+
+            }
+            @if (ViewBag.GuncellendiMi == true)
+            {
+                @Html.Label("Başarıyla eklendi!")
+                <button type="button" class="btn btn-success btn-toastr" data-context="success" data-message="Başarıyla Güncellendi" data-position="top-right">Succ</button>
+            }
+        </div>
+    </div>
+
+}

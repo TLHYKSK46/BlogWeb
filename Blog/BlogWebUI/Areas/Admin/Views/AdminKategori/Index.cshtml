@@ -5,11 +5,17 @@
 @{
     <!-- TABLE HOVER -->
     <div class="panel">
-        <div class="panel-heading">
+        <div class="panel-heading ">
             <h3 class="panel-title">Kategori İşlemleri</h3>
         </div>
-        <div class="col-md-12">
-            <button type="button" class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;Yeni Kategori Oluştur</button>
+        <div class="col-md-12 ">
+            @Html.ActionLink("", "KategoriOlustur", "AdminKategori", new { @controller = "AdminKategori" } ,new { @class = "btn btn-success right btn-lg lnr lnr-pencil", })
+             @if (ViewBag.eklendiMi==true)
+             {
+                 @Html.Label("Başarıyla Eklendi!");
+             }
+             <br />
+            <br />
         </div>
         <div class="panel-body">
             <table class="table table-hover">
@@ -23,20 +29,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Kategori)
+                    @using (Html.BeginForm("Sil", "AdminKategori", new { enctype = "multipart/form-data" }, FormMethod.Post))
                     {
+                        @foreach (var item in Model.Kategori)
+                        {
                     <tr>
 
-                        <td>@item.KategoriId</td>
-                        <td>@item.KategoriImg</td>
+                        <td>@item.KategoriId
+                      
+                        <td> <img src="~/images/KategoriFoto/@item.KategoriImg" class="img-circle" width="32" height="32" /></td></td>
                         <td>@item.KategoriAdi</td>
                         <td>@item.KategoriAciklama</td>
-                        <td><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-                        <td><button type="button" class="btn btn-danger"><span class="lnr lnr-trash"></span></button></td>
+                        <td>
+                            <button type="submit" name="id" value="@item.KategoriId" formaction=@Url.Action("Sil") formmethod="post" class="btn btn-danger btn-sm ">
+                                <span class="lnr lnr-trash"></span>
+                            </button>
+                        </td>
+                        @*<td><button type="button" class="btn btn-danger"><span class="lnr lnr-trash"></span></button></td>*@
 
                     </tr>
+                        }
                     }
-                </tbody>
+                    </tbody>
             </table>
         </div>
     </div>

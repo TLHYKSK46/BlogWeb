@@ -53,6 +53,26 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
             return View(model);
         }
+        public IActionResult MakaleIslem(int id=0) {
+
+            if (id.Equals(0))
+            {
+                var kategoriler = _kategoriServis.KategorileriGetir();
+                SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
+                AdminComboViewModel model = new AdminComboViewModel
+                {
+                    SelectedKatId = 0,
+                    SelectedKatData = datacombo
+                };
+                return View(model);
+
+            }
+            if (!id.Equals(0))
+            {
+
+            }
+            return View();
+        }
         public IActionResult MakaleOlustur()
         {
             var kategoriler = _kategoriServis.KategorileriGetir();
@@ -61,19 +81,10 @@ namespace BlogWebUI.Areas.Admin.Controllers
             {
                 SelectedKatId = 0,
                 SelectedKatData = datacombo
-
-
             };
             return View(model);
         }
-        //[HttpPost]
-        //public IActionResult MakaleOlustur(AdminComboViewModel model)
-        //{
-        //    var kategoriler = _kategoriServis.KategorileriGetir();
-        //    SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
-        //    model.SelectedKatData = datacombo;
-        //    return View(model);
-        //}
+      
         [HttpPost]
         public IActionResult MakaleOlustur(string makaleBaslik, string makaleIcerik, string makaleFotoUrl, int kategoriId)
         {
@@ -110,9 +121,14 @@ namespace BlogWebUI.Areas.Admin.Controllers
             //_makaleServis.Guncelle(makaleOkunmaSayisi);
             return View();
         }
+        [HttpPost]
         public IActionResult MakaleSil(int id)
         {
-            _makaleServis.Sil(id);
+            if (ModelState.IsValid)
+            {
+                _makaleServis.Sil(id);
+                ViewBag.silindiMi = true;
+            }
             return View();
         }
     }
