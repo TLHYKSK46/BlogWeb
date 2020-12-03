@@ -16,7 +16,7 @@
                             <div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
                             <p class="lead">Hasabınıza Giriş Yapınız</p>
                         </div>
-                        @using (Html.BeginForm("index", "AdminGiris", new { area = "", @class = "form-control" }, FormMethod.Post))
+                        @using (Html.BeginForm("index", "AdminGiris", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
                         {
                             
                                 <div class="form-group">

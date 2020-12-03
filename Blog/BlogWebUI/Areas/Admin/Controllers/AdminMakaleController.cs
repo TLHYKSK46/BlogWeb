@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class AdminMakaleController : Controller
     {
         IMakaleServis _makaleServis;

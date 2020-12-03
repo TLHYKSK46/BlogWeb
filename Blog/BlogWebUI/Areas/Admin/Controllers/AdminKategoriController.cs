@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class AdminKategoriController : Controller
     {
         IKategoriServis _kategoriServis;

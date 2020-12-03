@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eBC1NEO3+v23MEPXLzDq8PkIVOHGLC/9CD/HeT2HFFTuWUzbAy1f2984eogw/KFVg+aOMD8+Jk3IH+auYQsfYQ==",
+  "dgSpecHash": "Ci0+kowx2is55wegzg0XuAONg1+/Vudmp2cEl6SvqqAxDue7mag0p/ne7NaRefbxDUmCsevxEsnR35l+CAF+yw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\BlogWebs\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
+  "projectFilePath": "D:\\GitHub\\BlogWeb\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kardelen\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\Kardelen\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",

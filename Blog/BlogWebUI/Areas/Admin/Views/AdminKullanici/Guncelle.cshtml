@@ -1,27 +1,47 @@
 ﻿@model BlogWebUI.Areas.Admin.Models.AdminKullaniciViewModel
 @{
+}
+@{
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Makale Oluştur</h3>
+            <h3 class="panel-title">Profil Düzenle</h3>
         </div>
-        <div class="panel-body">
-            @using (Html.BeginForm("Guncelle", "AdminKullanici", new { area = "", @class = "form-control" }, FormMethod.Post))
+        <div class="panel-body ">
+            @if (ViewBag.GuncellendiMi == true)
             {
-                @Html.ValidationSummary(true)
+                <button type="button" class="btn btn-success btn-toastr" data-context="success" data-message="Başarıyla Güncellendi" data-position="top-right">Succ</button>
 
-                @Html.TextBox("AdSoyad", "", new { @class = "form-control", @placeholder = "AdSoyad" })
+
+
+
+            }
+
+            @using (Html.BeginForm("Guncelle", "AdminKullanici", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
+            {
+               <img src="~/images/KulFoto/@Model.Kullanici.FotoUrl" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
+
+                <input type="file" class="form-control">
+                <br />
+
+                @*@Html.ValidationSummary(true)*@
+                @Html.Hidden("KullaniciId", Model.Kullanici.KullaniciId)
+
+                @Html.TextBox("KulAdSoyad", Model.Kullanici.KulAdSoyad, new { @class = "form-control", @placeholder = "AdSoyad" })
                 <br>
-                @Html.TextBox("Email", "", new { @class = "form-control", @placeholder = "Email" })
-                <br> @Html.TextBox("Parola", "", new { @class = "form-control", @placeholder = "Parola" })
-                <br> @Html.TextBox("RolId", "", new { @class = "form-control", @placeholder = "RolId(1-2-3)" })
+                @Html.TextBox("Email", Model.Kullanici.Email, new { @class = "form-control", @placeholder = "Email" })
+                <br> @Html.TextBox("Parola", Model.Kullanici.Parola, new { @class = "form-control", @placeholder = "Parola" })
+                <br> @Html.TextBox("RolId", Model.Kullanici.RolId, new { @class = "form-control", @placeholder = "RolId(1-2-3)" })
                 <br>
                 <input type="file" class="form-control">
                 <br>
 
 
                 <br>
-                <input type="hidden" asp-for="@Model.Kullanici.KullaniciId" />
-                <button type="submit" class="btn btn-primary btn-lg  ">Güncelle</button>
+                @*<input type="hidden" asp-for="@Model.Kullanici.KullaniciId" />*@
+                <button type="submit" class="btn btn-primary btn-lg ">Güncelle</button>
+                @*<button type="submit" name="id" value="@Model.Kullanici.KullaniciId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>*@
 
             }
         </div>

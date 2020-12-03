@@ -8935,11 +8935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\BlogWebs\\Blog\\BlogWebUI\\BlogWebUI.csproj",
+      "projectUniqueName": "D:\\GitHub\\BlogWeb\\Blog\\BlogWebUI\\BlogWebUI.csproj",
       "projectName": "BlogWebUI",
-      "projectPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogWebUI\\BlogWebUI.csproj",
+      "projectPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogWebUI\\BlogWebUI.csproj",
       "packagesPath": "C:\\Users\\Kardelen\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogWebUI\\obj\\",
+      "outputPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogWebUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -8960,8 +8960,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitHub\\BlogWebs\\Blog\\BlogBusiness\\BlogBusiness.csproj": {
-              "projectPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogBusiness\\BlogBusiness.csproj"
+            "D:\\GitHub\\BlogWeb\\Blog\\BlogBusiness\\BlogBusiness.csproj": {
+              "projectPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogBusiness\\BlogBusiness.csproj"
             }
           }
         }

@@ -3,15 +3,23 @@
 @{
 }
 @{
+
     <!-- TABLE HOVER -->
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Makale İşlemleri</h3>
+            <h3 class="panel-title">Kullanıcı İşlemleri</h3>
         </div>
         <div class="col-md-12">
             @*<button type="button" class="btn btn-success "><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;Yeni</button>*@
         </div>
         <div class="panel-body">
+            @if (ViewBag.GuncellendiMi == true)
+            {
+                <div class="alert alert-success" role="alert">
+                    Mesajınız başarıyla gönderilmiştir.En kısa zamanda Size Geri Dönüş Yapılacaktır...
+
+                </div>
+            }
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -20,52 +28,65 @@
                         <th>Ad Soyad</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        
+
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @using (Html.BeginForm("Guncelle", "AdminKullanici", new { area = "", @class = "form-control" }, FormMethod.Post))
+                    @using (Html.BeginForm("Guncelle", "AdminKullanici", new { enctype = "multipart/form-data" }, FormMethod.Post))
+                    {
                         @foreach (var item in Model.Kullanicilar)
                         {
-                            <tr>
+                            if (!Model.KulId.Equals(item.KullaniciId))
+                            {
 
-                                <td>@item.KullaniciId</td>
-                                @if (!item.FotoUrl.Equals(null))
-                                {
-                                    <td><img src="~/images/KulFoto/@item.FotoUrl" class="img-circle" width="32" height="32" /></td>
-                                }
-                                else
-                                {
-                                    <td><img src="~/images/KulFoto/profil-1.jpg" class="img-circle" width="32" height="32" /></td>
+                                <tr>
+                                    <td>@item.KullaniciId</td>
 
-                                }
-                                <td>@item.KulAdSoyad</td>
-                                <td>@item.Email</td>
-                                <td>@item.RolId</td>
-                                @*@foreach (var i in Model.Roller)
-                    {
-                        if (item.RolId == i.RolId)
-                        {
-                            <td>@i.RolAdi</td>
+                                    @if (@item.FotoUrl != "")
+                                    {
+                                        <td><img src="~/images/KulFoto/@item.FotoUrl" class="img-circle" width="32" height="32" /></td>
+
+
+                                    }
+                                    else
+                                    {
+                                        <td><img src="~/images/KulFoto/profil-1.jpg" class="img-circle" width="32" height="32" /></td>
+
+                                    }
+                                    <td>@item.KulAdSoyad</td>
+                                    <td>@item.Email</td>
+
+                                    @foreach (var i in Model.Roller)
+                                    {
+                                        if (item.RolId == i.RolId)
+                                        {
+                                            <td>@i.RolAdi</td>
+                                        }
+
+
+                                    }
+                                    <td colspan="2" align="right">
+                                        <button type="submit" name="id" value="@item.KullaniciId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                        &nbsp;&nbsp;
+                                        <button type="submit" name="id" value="@item.KullaniciId" formaction=@Url.Action("Sil") formmethod="post" class="btn btn-danger">
+                                            <span class="lnr lnr-trash"></span>
+                                        </button>
+
+
+
+                                    </td>
+
+                                </tr>
+                            }
+
                         }
-
-
-                    }*@
-                                <td colspan="2" align="right">
-                                    @Html.Hidden("Id",item.KullaniciId)
-                                  @Html.ActionLink("Güncelle", "Guncelle","AdminKullanici",item.KullaniciId, new {@class= "btn btn-warning" })
-                                    @*<button type="button" class="btn btn-warning" Controller="Ad" action="Guncelle" route="@item.KullaniciId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>*@
-                                    &nbsp;&nbsp;
-                                    <button type="button" class="btn btn-danger"><span class="lnr lnr-trash"></span></button>
-                                </td>
-
-                            </tr>
-                        }
-
+                    }
                 </tbody>
             </table>
         </div>
     </div>
     <!-- END TABLE HOVER -->
-    }
+}

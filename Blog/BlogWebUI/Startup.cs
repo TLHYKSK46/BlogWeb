@@ -28,7 +28,9 @@ namespace BlogWebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddControllersWithViews()
               .AddRazorRuntimeCompilation();
             services.AddSession();
@@ -60,10 +62,10 @@ namespace BlogWebUI
             services.AddScoped<IIletisimServis, IletisimYonetici>();
             services.AddScoped<IIletisimDal, EfIletisimDal>();
 
-          
 
-            //services.AddScoped<IRolServis, RolYonetici>();
-            //services.AddScoped<IRolDal, EfRolDal>();
+
+            services.AddScoped<IRolServis, RolYonetici>();
+            services.AddScoped<IRolDal, EfRolDal>();
 
             //services.AddEntityFrameworkNpgsql().AddDbContext<MyWebApiContext>(opt =>
             //opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConection"));
@@ -107,16 +109,29 @@ namespace BlogWebUI
             //      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
             //    );
             //});
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //    endpoints.MapAreaControllerRoute(
+            //    "Admin",
+            //    "Admin",
+            //    "Admin/{controller=AdminHome}/{action=Index}/{id?}");
+
+            //});
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                   name: "Admin",
+                   areaName: "Admin",
+                   pattern: "Admin/{controller=Home}/{action=Index}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapAreaControllerRoute(
-                "Admin",
-                "Admin",
-                "Admin/{controller=AdminHome}/{action=Index}/{id?}");
 
+                endpoints.MapRazorPages();
             });
         }
     }

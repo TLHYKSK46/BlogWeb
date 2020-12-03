@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jxYbXDSp9TDeDkB4eDhEj+5s7GFOE+To+czBhK18M+Vec8ekGiyZQ7m4anV5cxoKA0fN/6M464EX+Rd6kiQX7g==",
+  "dgSpecHash": "7pOMhPADVWpMcnT+la6hWEH3Mcyiyl7npXNI/yJFLPAApqFnzyRLDHIKriqvPC03X1lkfPt2L4N/8oRQMIMnFQ==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\BlogWebs\\Blog\\BlogBusiness\\BlogBusiness.csproj",
+  "projectFilePath": "D:\\GitHub\\BlogWeb\\Blog\\BlogBusiness\\BlogBusiness.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kardelen\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\Kardelen\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",

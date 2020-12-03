@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
 using BlogWebUI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
 
+
+    [Area("admin")]
     public class AdminKullaniciController : Controller
 
     {
@@ -26,40 +29,57 @@ namespace BlogWebUI.Areas.Admin.Controllers
         {
 
             var model = new AdminKullaniciViewModel();
-
-            //model.Roller = _rolServis.RolleriGetir();
+            model.KulId = HttpContext.Session.GetInt32("id");
+            model.Roller = _rolServis.RolleriGetir();
             model.Kullanicilar = _kullaniciServis.KullanicilariGetir();
             return View(model);
 
         }
-        public IActionResult Guncelle(int Id)
+     
+      
+   [HttpGet]
+        public IActionResult Guncelle(int id)
         {
-            //var model = new AdminKullaniciViewModel();
-            //var kullanici = _kullaniciServis.KullanicilariGetir();
-            //foreach (var item in kullanici)
-            //{
-            //    model.Kullanici=item
-            //}
-
-            AdminKullaniciViewModel model = new AdminKullaniciViewModel()
+           
+         var   model = new AdminKullaniciViewModel()
             {
-                //Kullanici = _kullaniciServis.KullaniciGetir(Id)
+                Kullanici = _kullaniciServis.KullaniciGetir(id)
 
             };
+          
+
             return View(model);
-
-
         }
         [HttpPost]
         public IActionResult Guncelle(Kullanici kullanici)
         {
+            if (kullanici.FotoUrl==null)
+            {
+                kullanici.FotoUrl = "user.png";
+            }
 
             if (ModelState.IsValid)
             {
                 _kullaniciServis.Guncelle(kullanici);
-                TempData.Add("mesaj", "Kullanici Başarıyla Guncellendi!");
+             
+                ViewBag.GuncellendiMi = true;
             }
-            return RedirectToAction("Guncelle");
+            return RedirectToAction("index","AdminKullanici");
+
+
+        }
+        [HttpPost]
+        public IActionResult Sil(int id)
+        {
+          
+
+            if (ModelState.IsValid)
+            {
+                _kullaniciServis.Sil(id);
+
+                ViewBag.silindiMi = true;
+            }
+            return RedirectToAction("index", "AdminKullanici");
 
 
         }

@@ -12,5 +12,7 @@ namespace BlogWebUI.Areas.Admin.Models
         public List<Kullanici> Kullanicilar { get; internal set; }
         public List<Rol> Roller { get; internal set; }
         public Kullanici Kullanici { get; internal set; }
+        public object KulId { get; internal set; }
+        public string AdSoyad { get; internal set; }
     }
 }

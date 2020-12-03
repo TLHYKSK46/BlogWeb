@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\BlogWebs\\Blog\\BlogEntities\\BlogEntities.csproj",
+      "projectUniqueName": "D:\\GitHub\\BlogWeb\\Blog\\BlogEntities\\BlogEntities.csproj",
       "projectName": "BlogEntities",
-      "projectPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogEntities\\BlogEntities.csproj",
+      "projectPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogEntities\\BlogEntities.csproj",
       "packagesPath": "C:\\Users\\Kardelen\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogEntities\\obj\\",
+      "outputPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogEntities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

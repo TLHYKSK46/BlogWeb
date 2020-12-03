@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class AdminGirisController : Controller
     {
         IKullaniciServis _kullaniciServis;

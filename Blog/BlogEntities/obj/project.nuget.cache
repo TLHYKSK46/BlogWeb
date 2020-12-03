@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zca4tk/ZaNWYO5jmOV1SWysnbsv+AndCG5hULzX5M6j3qscN/PQK40gmSlyT+ffXkqz3Jh9KhG41pknfYxNp4A==",
+  "dgSpecHash": "R+iiFGJgLk4QNWp8BYsxW24NTI4MyW7lYLoPJpEQr6GhxpOAJ9NATeLyyOQbwSAGMinWpI4pzYORP5QCKHXKNw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\BlogWebs\\Blog\\BlogEntities\\BlogEntities.csproj",
+  "projectFilePath": "D:\\GitHub\\BlogWeb\\Blog\\BlogEntities\\BlogEntities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -22,6 +22,7 @@
                     <th>#</th>
                     <th>Foto</th>
                     <th>Başlık</th>
+                  
                     <th>içerik</th>
                     <th>Okunma Sayısı</th>
                     <th>Yayınlanma Tarihi</th>
@@ -35,15 +36,26 @@
                 <tr>
 
                     <td>@item.MakaleId</td>
-                    <td>@item.MakaleFotoUrl</td>
-                    <td>@item.MakaleBaslik</td>
-                    @if (item.MakaleIcerik.Length > 100)
+                    <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-thumbnail img-responsive" width="64" height="64" /></td>
+                    @*@if (!item.MakaleFotoUrl.Equals(null))
                     {
-                        <td>@item.MakaleIcerik.Substring(0, 100)...</td>
+                        <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-circle" width="32" height="32" /></td>
                     }
-                    else {
+                    else
+                    {
+                        <td><img src="~/images/MakaleFoto/resim1.jpg" class="img-circle" width="32" height="32" /></td>
 
-                    <td>@item.MakaleIcerik</td>
+                    }*@
+                    @*<td>@item.MakaleFotoUrl</td>*@
+                    <td>@item.MakaleBaslik</td>
+                    @if (item.MakaleIcerik.Length > 50)
+                    {
+                        <td>@item.MakaleIcerik.Substring(0, 50)...</td>
+                    }
+                    else
+                    {
+
+                        <td>@item.MakaleIcerik</td>
                     }
                     <td>@item.MakaleOkunmaSayisi</td>
                     <td>@item.MakaleYayinlanmaTarihi</td>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class AdminHomeController : Controller
     {
         public IActionResult Index()

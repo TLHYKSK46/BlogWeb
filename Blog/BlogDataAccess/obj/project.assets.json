@@ -6033,11 +6033,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\BlogWebs\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
+      "projectUniqueName": "D:\\GitHub\\BlogWeb\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
       "projectName": "BlogDataAccess",
-      "projectPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
+      "projectPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogDataAccess\\BlogDataAccess.csproj",
       "packagesPath": "C:\\Users\\Kardelen\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogDataAccess\\obj\\",
+      "outputPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogDataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -6058,8 +6058,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\GitHub\\BlogWebs\\Blog\\BlogCore\\BlogCore.csproj": {
-              "projectPath": "D:\\GitHub\\BlogWebs\\Blog\\BlogCore\\BlogCore.csproj"
+            "D:\\GitHub\\BlogWeb\\Blog\\BlogCore\\BlogCore.csproj": {
+              "projectPath": "D:\\GitHub\\BlogWeb\\Blog\\BlogCore\\BlogCore.csproj"
             }
           }
         }
