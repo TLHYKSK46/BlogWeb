@@ -921,3 +921,4 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.dll
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.pdb
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.genruntimeconfig.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminKategori\KategoriOlustur.cshtml.g.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminMakale\Guncelle.cshtml.g.cs

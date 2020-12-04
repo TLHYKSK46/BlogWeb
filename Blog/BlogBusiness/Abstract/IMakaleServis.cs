@@ -8,7 +8,7 @@ namespace BlogBusiness.Abstract
    public interface IMakaleServis
     {
         List<Makale> MakaleleriGetir();
-        List<Makale> MakaleGetir(int MakaleId);
+       public Makale MakaleGetir(int MakaleId);
         List<Makale> KategoriyeGoreGetir(int KategoriId);
         void Ekle(Makale makale);
         void Guncelle(Makale makale);

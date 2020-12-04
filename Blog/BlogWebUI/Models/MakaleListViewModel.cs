@@ -21,5 +21,6 @@ namespace BlogWebUI.Models
         public int SeciliMakaleId { get; internal set; }
         public List<Yorum> Yorumlar { get; internal set; }
         public List<Makale> MakaleAra { get; internal set; }
+        public Makale Makale { get; internal set; }
     }
 }

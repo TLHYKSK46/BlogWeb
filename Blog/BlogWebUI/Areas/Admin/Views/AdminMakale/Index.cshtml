@@ -12,7 +12,7 @@
         <h2 class="panel-title">Makale İşlemleri</h2>
     </div>
     <div class="col-md-12">
-        @Html.ActionLink("", "MakaleOlustur", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "btn btn-success right btn-lg lnr lnr-pencil", })
+        @Html.ActionLink("","MakaleOlustur", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "btn btn-success right btn-lg lnr lnr-pencil", })
         <br /><br />
         @*<a href="/Admin/AdminMakale/MakaleOlustur" type="button" class="btn btn-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;Yeni Makale Oluştur</a>*@
     </div>
@@ -22,11 +22,13 @@
                 <tr>
                     <th>#</th>
                     <th>Foto</th>
+                    <th>Kategori</th>
                     <th>Başlık</th>
                   
                     <th>içerik</th>
                     <th>Okunma Sayısı</th>
                     <th>Yayınlanma Tarihi</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,17 +39,25 @@
                 <tr>
 
                     <td>@item.MakaleId</td>
-                    <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-thumbnail img-responsive" width="64" height="64" /></td>
+                    <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-thumbnail img-responsive" width="32" height="32" /></td>
                     @*@if (!item.MakaleFotoUrl.Equals(null))
-                    {
-                        <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-circle" width="32" height="32" /></td>
-                    }
-                    else
-                    {
-                        <td><img src="~/images/MakaleFoto/resim1.jpg" class="img-circle" width="32" height="32" /></td>
+        {
+            <td><img src="~/images/MakaleFoto/@item.MakaleFotoUrl" class="img-circle" width="32" height="32" /></td>
+        }
+        else
+        {
+            <td><img src="~/images/MakaleFoto/resim1.jpg" class="img-circle" width="32" height="32" /></td>
 
-                    }*@
+        }*@
                     @*<td>@item.MakaleFotoUrl</td>*@
+                    @foreach (var kategori in Model.Kategoriler)
+                    {
+                        if (item.KategoriId == kategori.KategoriId)
+                        {
+                            <td>@kategori.KategoriAdi</td>
+                        }
+
+                    }
                     <td>@item.MakaleBaslik</td>
                     @if (item.MakaleIcerik.Length > 50)
                     {
@@ -58,12 +68,21 @@
 
                         <td>@item.MakaleIcerik</td>
                     }
-                    <td>@item.MakaleOkunmaSayisi</td>
-                    <td>@item.MakaleYayinlanmaTarihi</td>
-                    <td><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-                    <td><button type="button" class="btn btn-danger"><span class="lnr lnr-trash"></span></button></td>
+                    <td style="text-align:center;">@item.MakaleOkunmaSayisi</td>
+                    <td style="text-align:center;">@item.MakaleYayinlanmaTarihi</td>
+                    @using (Html.BeginForm("Guncelle", "AdminMakale", new { enctype = "multipart/form-data" }, FormMethod.Get))
+                    {
+                <td style="text-align:right;">
+                    <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning fa fa-pencil-square-o btn-sm ">
+                    </button>
+                    @*<button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>*@
+                    <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("MakaleSil") formmethod="post" class="btn btn-danger btn-sm">
+                        <span class="lnr lnr-trash"></span>
+                    </button>
 
-                </tr>
+                </td>
+                    }
+                    </tr>
                         makaleSayisi += 1;
                     }
                 }
@@ -78,6 +97,14 @@
                 @sayac+=1
                 <td>@Html.Label(sayac.ToString())</td>
                 <td>@item.MakaleFotoUrl</td>
+               @foreach (var kategori in Model.Kategoriler)
+               {
+                   if (item.KategoriId==kategori.KategoriId)
+                   {
+                       <td>@kategori.KategoriAdi</td>
+                   }
+
+               }
                 <td>@item.MakaleBaslik</td>
                 @if (item.MakaleIcerik.Length > 100)
                 {
@@ -92,9 +119,8 @@
                 <td>@item.MakaleYayinlanmaTarihi</td>
                 @using (Html.BeginForm("MakaleSil", "AdminMakale", new { enctype = "multipart/form-data" }, FormMethod.Post))
                 {
-                    <td><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
                     <td>
-
+                        <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                         <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("MakaleSil") formmethod="post" class="btn btn-danger btn-sm ">
                             <span class="lnr lnr-trash"></span>
                         </button>
@@ -111,7 +137,10 @@
             </tbody>
         </table>
     </div>
-    @Html.Label("Toplam Makale Sayısı: " + makaleSayisi)
+    <div style="margin:10px;">
+        @Html.Label("Toplam Makale Sayısı: " + makaleSayisi)
+
+    </div>
 
 </div>
     <!-- END TABLE HOVER -->

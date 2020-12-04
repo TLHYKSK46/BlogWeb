@@ -1,4 +1,5 @@
 ﻿using BlogEntities.Concreate;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace BlogWebUI.Areas.Admin.Models
         public Kullanici Kullanici { get; internal set; }
         public object KulId { get; internal set; }
         public string AdSoyad { get; internal set; }
+        public int SelectedRolId { get; internal set; }
+        public SelectList SelectedRolData { get; internal set; }
     }
 }

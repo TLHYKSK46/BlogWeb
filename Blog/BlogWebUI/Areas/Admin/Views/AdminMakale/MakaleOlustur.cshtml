@@ -10,20 +10,22 @@
         <h3 class="panel-title">Makale Oluştur</h3>
     </div>
     <div class="panel-body">
-        @using (Html.BeginForm("MakaleOlustur", "AdminMakale", new { area = "", @class = "form-control" }, FormMethod.Post))
+        @Html.ActionLink(" Geri", "index", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
+        <br />
+        @using (Html.BeginForm("MakaleOlustur", "AdminMakale", new { area = "admin", @class = "form-control" }, FormMethod.Post))
         {
             @Html.ValidationSummary(true)
-
+            <br/>
             @Html.TextBox("MakaleBaslik", "", new { @class = "form-control", @placeholder = "Makale Başlığı" })
             <br>
-            @*@Html.DropDownListFor(x => x.Kategoriler, Model.KulId, "Kategori Seç")*@
             <input type="file" class="form-control">
             <br>
 
-            @Html.DropDownListFor(m => m.SelectedKatId, Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @class = "dropdown form-control" })
+            @Html.DropDownList("KategoriId", Model.SelectedKatData,"Lütfen Bir Kategori Seçiniz", new { @class = "dropdown form-control" })
+            @*@Html.DropDownListFor(m => m.SelectedKatId, Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @SelectListItem = "Kategori", @Id = "KategoriId", @class = "dropdown form-control" })*@
 
             <br>
-            @*<textarea class="form-control" placeholder="Makale İçeriği" rows="10"></textarea>*@
+
             @Html.TextArea("MakaleIcerik", "", new { @class = "form-control", @placeholder = "Makale İçeriği", @rows = 10 })
 
             <br>

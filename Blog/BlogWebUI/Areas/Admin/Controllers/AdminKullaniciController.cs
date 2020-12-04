@@ -7,11 +7,10 @@ using BlogEntities.Concreate;
 using BlogWebUI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
-
-
     [Area("admin")]
     public class AdminKullaniciController : Controller
 
@@ -27,7 +26,6 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
         public IActionResult index()
         {
-
             var model = new AdminKullaniciViewModel();
             model.KulId = HttpContext.Session.GetInt32("id");
             model.Roller = _rolServis.RolleriGetir();
@@ -35,19 +33,18 @@ namespace BlogWebUI.Areas.Admin.Controllers
             return View(model);
 
         }
-     
-      
    [HttpGet]
         public IActionResult Guncelle(int id)
         {
-           
-         var   model = new AdminKullaniciViewModel()
+            var roller = _rolServis.RolleriGetir();
+            var kullanici = _kullaniciServis.KullaniciGetir(id);
+            SelectList datacombo = new SelectList(roller, "RolId", "RolAdi",kullanici.RolId);
+            var   model = new AdminKullaniciViewModel()
             {
-                Kullanici = _kullaniciServis.KullaniciGetir(id)
-
+                SelectedRolId = kullanici.RolId,
+                SelectedRolData = datacombo,
+                Kullanici = kullanici
             };
-          
-
             return View(model);
         }
         [HttpPost]
@@ -71,8 +68,6 @@ namespace BlogWebUI.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Sil(int id)
         {
-          
-
             if (ModelState.IsValid)
             {
                 _kullaniciServis.Sil(id);

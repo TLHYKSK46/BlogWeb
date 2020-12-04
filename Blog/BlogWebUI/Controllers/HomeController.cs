@@ -92,7 +92,7 @@ namespace BlogWebUI.Controllers
             {
                 SeciliMakaleId = seciliMakaleId,
                 Kullanicilar = kullanicilar,
-                Makaleler = makaleler,
+                Makale = makaleler,
                 Kategoriler = kategoriler,
                 Yorumlar = yorumlar
             };
@@ -104,18 +104,18 @@ namespace BlogWebUI.Controllers
         {
 
             var yorumlar = _yorumServis.YorumlariGetir();
-            var makaleler = _makaleServis.MakaleGetir(ID);
+            var makale = _makaleServis.MakaleGetir(ID);
             var kategoriler = _kategoriServis.KategorileriGetir();
             var kullanicilar = _kullaniciServis.KullanicilariGetir();
             var seciliMakaleId = ID;
-            Makale makaleOkunmaSayisi = makaleler.First(u => u.MakaleId == ID);
-            makaleOkunmaSayisi.MakaleOkunmaSayisi += 1;
-            _makaleServis.Guncelle(makaleOkunmaSayisi);
+            int makaleOkunmaSayisi = makale.MakaleOkunmaSayisi;
+            makaleOkunmaSayisi+= 1;
+            _makaleServis.Guncelle(makale);
             MakaleListViewModel model = new MakaleListViewModel
             {
                 SeciliMakaleId = seciliMakaleId,
                 Kullanicilar = kullanicilar,
-                Makaleler = makaleler,
+                Makale = makale,
                 Kategoriler = kategoriler,
                 Yorumlar = yorumlar
             };

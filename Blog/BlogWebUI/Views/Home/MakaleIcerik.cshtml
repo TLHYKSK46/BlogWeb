@@ -6,10 +6,9 @@
 
     <!-- Page Content -->
     <div class="container kartim">
-        @foreach (var item in Model.Makaleler)
-        {
+      
            
-                var barKategori = (from i in Model.Kategoriler where  i.KategoriId == item.KategoriId select i.KategoriAdi).ToList();
+                @{var barKategori = (from i in Model.Kategoriler where i.KategoriId == Model.Makale.KategoriId select i.KategoriAdi).ToList(); }
    <br>
         <ol class="breadcrumb  "  >
             <li class="breadcrumb-item">
@@ -24,23 +23,22 @@
             </li>
         </ol>
                  
-        }
-        <div class="row">
-            @{ foreach (var item in Model.Makaleler)
-                {
-                    var kulad = (from i in Model.Kullanicilar where i.KullaniciId==item.KullaniciId select i.KulAdSoyad).ToList();
-                    var kulFoto = (from foto in Model.Kullanicilar where foto.KullaniciId == item.KullaniciId select foto.FotoUrl).ToList();
+        }        <div class="row">
+            @{ 
+                    var kulad = (from i in Model.Kullanicilar where i.KullaniciId== Model.Makale.KullaniciId select i.KulAdSoyad).ToList();
+
+                    var kulFoto = (from foto in Model.Kullanicilar where foto.KullaniciId == Model.Makale.KullaniciId select foto.FotoUrl).ToList();
 
                     <!-- Post Content Column -->
             <div class="col-lg-8">
-                <h1 class="card-title">@item.MakaleBaslik </h1>
+                <h1 class="card-title">@Model.Makale.MakaleBaslik </h1>
                 <div class="">
                     <span style="float:left; "><img class="rounded-circle" src="~/images/KulFoto/@kulFoto.FirstOrDefault()" width="48" height="48"  /></span>
                     <div style="text-align:left;vertical-align:baseline;">
                         <span class="text-lg-center text-xl-center" style="font-size:14px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin:0px;padding:0px;vertical-align:bottom;margin-left:10px;">@kulad.FirstOrDefault()</span><br />
                         <span style="font-size:10px;font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif; margin:0px;padding:0;text-align:start; vertical-align:super; margin-left:10px;">
                            <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                            @item.MakaleYayinlanmaTarihi
+                            @Model.Makale.MakaleYayinlanmaTarihi
                         </span>
                         <span class="float-right text-md-right sosyalbutonlar">
                             <a href="https://twitter.com/talhayksk" target="_blank" class="twitter"><i class="fa fa-twitter fa-stack-lg" aria-hidden="true"></i></a>
@@ -56,9 +54,9 @@
 
 <hr>
                 <!-- Preview Image -->
-                @if (item.MakaleFotoUrl != null)
+                @if (Model.Makale.MakaleFotoUrl != null)
                 {
-                    <img class="img-fluid rounded" src="~/images/MakaleFoto/@item.MakaleFotoUrl" width="750" height="300" alt="">
+                    <img class="img-fluid rounded" src="~/images/MakaleFoto/@Model.Makale.MakaleFotoUrl" width="750" height="300" alt="">
 
                 }
                 else
@@ -70,7 +68,7 @@
                 <!-- Post Content -->
                 <p class="font-weight-normal" style="text-align: justify;">
 
-                    @item.MakaleIcerik
+                    @Model.Makale.MakaleIcerik
 
 
                 </p>
@@ -103,7 +101,7 @@
                     @foreach (var itemYorum in Model.Yorumlar)
                     {
                         <!-- Single Comment -->
-                        if (itemYorum.MakaleId.Equals(item.MakaleId))
+                        if (itemYorum.MakaleId.Equals(Model.Makale.MakaleId))
                         {
 
                             var kuladYorum = (from i in Model.Kullanicilar where i.KullaniciId == itemYorum.KullaniciId select i.KulAdSoyad).ToList();

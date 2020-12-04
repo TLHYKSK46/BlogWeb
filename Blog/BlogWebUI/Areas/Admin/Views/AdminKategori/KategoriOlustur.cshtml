@@ -7,7 +7,8 @@
             <h3 class="panel-title">Yeni Kategori Ekle</h3>
         </div>
         <div class="panel-body ">
-
+            @Html.ActionLink(" Geri", "index", "AdminKategori", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
+            <br />
 
             @using (Html.BeginForm("KategoriOlustur", "AdminKategori", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
             {
@@ -17,13 +18,13 @@
             <br />*@
 
                 @*@Html.ValidationSummary(true)*@
-
+                <br />
 
                 @Html.TextBox("KategoriAdi", "", new { @class = "form-control", @placeholder = "Kategori Adı " })
                 <br>
                 @Html.TextArea("KategoriAciklama", "", new { @class = "form-control", @placeholder = "Kategori Açıklama" })
                 <br>
-                <input type="file" class="form-control">
+                <input type="file" name="KategoriImg" class="form-control">
                 <br>
 
 

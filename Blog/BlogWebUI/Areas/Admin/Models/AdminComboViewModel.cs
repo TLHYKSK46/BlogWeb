@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using BlogEntities.Concreate;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace BlogWebUI.Areas.Admin.Models
     {
         public int SelectedKatId { get; internal set; }
         public SelectList SelectedKatData { get; internal set; }
+        //public List<Kategori> Kategoriler { get; internal set; }
+        //public Makale Makale { get; internal set; }
     }
 }

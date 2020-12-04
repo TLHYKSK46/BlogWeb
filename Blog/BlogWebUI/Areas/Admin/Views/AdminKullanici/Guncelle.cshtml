@@ -7,18 +7,19 @@
             <h3 class="panel-title">Profil Düzenle</h3>
         </div>
         <div class="panel-body ">
+            @Html.ActionLink(" Geri", "index", "AdminKullanici", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
+            <br />
+
             @if (ViewBag.GuncellendiMi == true)
             {
                 <button type="button" class="btn btn-success btn-toastr" data-context="success" data-message="Başarıyla Güncellendi" data-position="top-right">Succ</button>
-
-
-
 
             }
 
             @using (Html.BeginForm("Guncelle", "AdminKullanici", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
             {
-               <img src="~/images/KulFoto/@Model.Kullanici.FotoUrl" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
+                <br />
+                <img src="~/images/KulFoto/@Model.Kullanici.FotoUrl" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
 
                 <input type="file" class="form-control">
                 <br />
@@ -28,9 +29,19 @@
 
                 @Html.TextBox("KulAdSoyad", Model.Kullanici.KulAdSoyad, new { @class = "form-control", @placeholder = "AdSoyad" })
                 <br>
-                @Html.TextBox("Email", Model.Kullanici.Email, new { @class = "form-control", @placeholder = "Email" })
-                <br> @Html.TextBox("Parola", Model.Kullanici.Parola, new { @class = "form-control", @placeholder = "Parola" })
-                <br> @Html.TextBox("RolId", Model.Kullanici.RolId, new { @class = "form-control", @placeholder = "RolId(1-2-3)" })
+                @Html.TextBox("Email", Model.Kullanici.Email, new { @class = "form-control", @placeholder = "Email", @readonly = "readonly", @Type = "email" })
+                <br> @Html.TextBox("Parola", Model.Kullanici.Parola, new { @class = "form-control ", @readonly = "readonly", @placeholder = "Parola", @Type = "password" })
+                <br> @*@Html.TextBox("RolId", Model.Kullanici.RolId, new { @class = "form-control", @placeholder = "RolId(1-2-3)" })*@
+
+                @Html.DropDownList("RolId", Model.SelectedRolData, new { @class = "dropdown form-control" })
+                <br />
+                @*@Html.DropDownList("RolId",new List { new SelectListItem { 
+                                Text=Model.SelectedRolData.DataTextField,
+                                Value=Model.SelectedRolData.DataValueField,
+                                
+                                           
+                                } } , Model.SelectedRolId.ToString(), new { @class = "dropdown form-control" })*@
+
                 <br>
                 <input type="file" class="form-control">
                 <br>

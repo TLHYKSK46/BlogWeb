@@ -1,0 +1,38 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminMakaleViewModel
+@{
+    <!-- INPUTS -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Makale Oluştur</h3>
+        </div>
+        <div class="panel-body ">
+            @Html.ActionLink(" Geri", "index", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
+            <br />
+            @using (Html.BeginForm("Guncelle", "AdminMakale", new { area = "admin", @class = "form-control" }, FormMethod.Post))
+            {
+                @Html.Hidden("MakaleId", Model.Makale.MakaleId)
+                @Html.ValidationSummary(true)
+                <br />
+
+                @Html.TextBox("MakaleBaslik", Model.Makale.MakaleBaslik, new { @class = "form-control", @placeholder = "Makale Başlığı" })
+                <br>
+                <input type="file" class="form-control">
+                <br>
+
+
+                @Html.DropDownList("KategoriId", Model.SelectedKatData, new { @class = "dropdown form-control" })
+                @*@Html.DropDownListFor(m => m.SelectedKatId, Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @SelectListItem = "Kategori", @Id = "KategoriId", @class = "dropdown form-control" })*@
+
+                <br>
+
+                @Html.TextArea("MakaleIcerik", Model.Makale.MakaleIcerik, new { @class = "form-control", @placeholder = "Makale İçeriği", @rows = 10 })
+
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg  ">Güncelle</button>
+
+            }
+        </div>
+    </div>
+    <!-- END INPUTS -->
+
+}

@@ -14,7 +14,8 @@ namespace BlogWebUI.Areas.Admin.Models
         public int KulId { get; internal set; }
         public List<Kategori> Kategoriler { get; internal set; }
         //public List<Kategori> MobileList;
-        public int selectListId { get; set; }
-        public SelectList selectValue { get; internal set; }
+        public int SelectedKatId { get; internal set; }
+        public SelectList SelectedKatData { get; internal set; }
+        public Makale Makale { get; internal set; }
     }
 }

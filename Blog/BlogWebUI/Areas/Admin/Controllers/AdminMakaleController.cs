@@ -28,51 +28,19 @@ namespace BlogWebUI.Areas.Admin.Controllers
             var makaleler = _makaleServis.MakaleleriGetir();
             var kategoriler = _kategoriServis.KategorileriGetir();
             SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
-
-
-            //Kategori kategori = new Kategori
-            //{
-
-            //};
-
-            //foreach (var item in kategoriler)
-            //{
-            //    SelectList katId = new SelectList(item.KategoriId.ToString());
-            //    SelectList katadi = new SelectList(item.KategoriAdi);
-            //}
-
             AdminMakaleViewModel model = new AdminMakaleViewModel
             {
                 Kategoriler = kategoriler,
                 Makaleler = makaleler,
                 RolId = (int)HttpContext.Session.GetInt32("rolid"),
                 KulId = (int)HttpContext.Session.GetInt32("id"),
-                selectValue = datacombo
+             
 
             };
 
             return View(model);
         }
-        public IActionResult MakaleIslem(int id=0) {
-
-            if (id.Equals(0))
-            {
-                var kategoriler = _kategoriServis.KategorileriGetir();
-                SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
-                AdminComboViewModel model = new AdminComboViewModel
-                {
-                    SelectedKatId = 0,
-                    SelectedKatData = datacombo
-                };
-                return View(model);
-
-            }
-            if (!id.Equals(0))
-            {
-
-            }
-            return View();
-        }
+      
         public IActionResult MakaleOlustur()
         {
             var kategoriler = _kategoriServis.KategorileriGetir();
@@ -80,7 +48,9 @@ namespace BlogWebUI.Areas.Admin.Controllers
             AdminComboViewModel model = new AdminComboViewModel
             {
                 SelectedKatId = 0,
-                SelectedKatData = datacombo
+                SelectedKatData = datacombo,
+                //Kategoriler=kategoriler,
+                //Makale=new Makale()
             };
             return View(model);
         }
@@ -88,38 +58,54 @@ namespace BlogWebUI.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult MakaleOlustur(string makaleBaslik, string makaleIcerik, string makaleFotoUrl, int kategoriId)
         {
-            var kategoriler = _kategoriServis.KategorileriGetir();
-            SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
-            //kategoriId = datacombo.Where(x=>x.Value));
             var kulId = HttpContext.Session.GetInt32("id");
+           
             if (!makaleBaslik.Equals(null) && !makaleIcerik.Equals(null) && !kategoriId.Equals(null) && !kulId.Equals(null))
             {
                 Makale makale = new Makale
                 {
                     KategoriId = kategoriId,
-                    KullaniciId = kategoriId,
+                    KullaniciId = Convert.ToInt32(kulId),
                     MakaleBaslik = makaleBaslik,
                     MakaleFotoUrl = makaleFotoUrl,
                     MakaleIcerik = makaleIcerik,
                     MakaleOkunmaSayisi = 0,
                     MakaleYayinlanmaTarihi = DateTime.Now
                 };
-
-
                 _makaleServis.Ekle(makale);
             }
-
-
-
-            return View();
+            ViewBag.makaleYayinlandiMi = true;
+            return RedirectToAction("index","AdminMakale");
         }
 
-        public IActionResult MakaleDüzenle(Makale makale)
+        [HttpGet]
+        public IActionResult Guncelle(int id) {
+            var kategoriler = _kategoriServis.KategorileriGetir();
+            var makale = _makaleServis.MakaleGetir(id);
+            SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi",makale.KategoriId);
+          
+            int kategoriId = makale.KategoriId;
+            var model = new AdminMakaleViewModel();
+            model.Makale = makale;
+            model.SelectedKatId =kategoriId;
+            model.SelectedKatData = datacombo;
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Guncelle(Makale makale)
         {
-            //Makale makaleOkunmaSayisi = makaleler.First(u => u.MakaleId == ID);
-            //makaleOkunmaSayisi.MakaleOkunmaSayisi += 1;
-            //_makaleServis.Guncelle(makaleOkunmaSayisi);
-            return View();
+            if (ModelState.IsValid)
+            {
+                var mak = _makaleServis.MakaleGetir(makale.MakaleId);
+                makale.MakaleOkunmaSayisi = mak.MakaleOkunmaSayisi;
+                makale.KullaniciId = mak.KullaniciId;
+                makale.MakaleId = mak.MakaleId;
+                makale.MakaleYayinlanmaTarihi = mak.MakaleYayinlanmaTarihi;
+                _makaleServis.Guncelle(makale);
+                ViewBag.guncellendiMi = true;
+            }
+            return RedirectToAction("index","AdminMakale");
         }
         [HttpPost]
         public IActionResult MakaleSil(int id)
@@ -129,7 +115,7 @@ namespace BlogWebUI.Areas.Admin.Controllers
                 _makaleServis.Sil(id);
                 ViewBag.silindiMi = true;
             }
-            return View();
+            return RedirectToAction("index", "AdminMakale");
         }
     }
 }
