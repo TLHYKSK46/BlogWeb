@@ -2,6 +2,7 @@
 @{
 }
 @{
+
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">Profil Düzenle</h3>
@@ -9,53 +10,50 @@
         <div class="panel-body ">
             @Html.ActionLink(" Geri", "index", "AdminKullanici", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
             <br />
-
-            @if (ViewBag.GuncellendiMi == true)
-            {
-                <button type="button" class="btn btn-success btn-toastr" data-context="success" data-message="Başarıyla Güncellendi" data-position="top-right">Succ</button>
-
-            }
-
-            @using (Html.BeginForm("Guncelle", "AdminKullanici", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
-            {
+            <form enctype="multipart/form-data" method="post" action="/Admin/AdminKullanici/Guncelle">
+                <input type="hidden" id="KullaniciId" name="KullaniciId" value="@Model.Kullanici.KullaniciId">
                 <br />
                 <img src="~/images/KulFoto/@Model.Kullanici.FotoUrl" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
 
-                <input type="file" class="form-control">
                 <br />
-
-                @*@Html.ValidationSummary(true)*@
-                @Html.Hidden("KullaniciId", Model.Kullanici.KullaniciId)
-
-                @Html.TextBox("KulAdSoyad", Model.Kullanici.KulAdSoyad, new { @class = "form-control", @placeholder = "AdSoyad" })
-                <br>
-                @Html.TextBox("Email", Model.Kullanici.Email, new { @class = "form-control", @placeholder = "Email", @readonly = "readonly", @Type = "email" })
-                <br> @Html.TextBox("Parola", Model.Kullanici.Parola, new { @class = "form-control ", @readonly = "readonly", @placeholder = "Parola", @Type = "password" })
-                <br> @*@Html.TextBox("RolId", Model.Kullanici.RolId, new { @class = "form-control", @placeholder = "RolId(1-2-3)" })*@
-
-                @Html.DropDownList("RolId", Model.SelectedRolData, new { @class = "dropdown form-control" })
+                <input type="file" class="form-control" name="FotoUrl"  />
                 <br />
-                @*@Html.DropDownList("RolId",new List { new SelectListItem { 
-                                Text=Model.SelectedRolData.DataTextField,
-                                Value=Model.SelectedRolData.DataValueField,
-                                
-                                           
-                                } } , Model.SelectedRolId.ToString(), new { @class = "dropdown form-control" })*@
+                <div class="form-group">
 
-                <br>
-                <input type="file" class="form-control">
-                <br>
+                    <input type="text" value="@Model.Kullanici.KulAdSoyad" class="form-control" name="KulAdSoyad" placeholder="Ad Soyad " />
+                    <br />
+                    <input type="email" class="form-control" value="@Model.Kullanici.Email" name="Email" placeholder="Email" readonly="readonly" />
+                    <br />
+                    <input type="password" class="form-control" name="Parola" value="@Model.Kullanici.Parola" placeholder="password" readonly="readonly" />
+                    <br />
+
+                    @*@Html.DropDownList("RolId", Model.SelectedRolData, new { @class = "dropdown form-control" })*@
+                <select name="RolId" class="form-control">
+                    @foreach (var item in Model.SelectedRolData)
+                    {
+                        if (Model.Kullanici.RolId == Convert.ToInt32(item.Value))
+                        {
+                            <option value="@item.Value" selected>@item.Text</option>
+
+                        }
+                        else
+                        {
+                            <option value="@item.Value">@item.Text</option>
+
+                        }
+
+                    }
+
+                </select>
+                    <br />
+
+                    <input type="submit" class="btn btn-primary btn-lg " />
+                </div>
+            </form>
 
 
-                <br>
-                @*<input type="hidden" asp-for="@Model.Kullanici.KullaniciId" />*@
-                <button type="submit" class="btn btn-primary btn-lg ">Güncelle</button>
-                @*<button type="submit" name="id" value="@Model.Kullanici.KullaniciId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </button>*@
-
-            }
         </div>
-    </div>
+        </div>
 
-}
+           
+            }

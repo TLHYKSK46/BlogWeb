@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
+using BlogWebUI.Areas.Admin.Helper;
 using BlogWebUI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,7 @@ namespace BlogWebUI.Areas.Admin.Controllers
     {
         IKullaniciServis _kullaniciServis;
         IRolServis _rolServis;
+        public ResimKaydet _resimKaydet;
         public AdminKullaniciController(IKullaniciServis kullaniciServis = null, IRolServis rolServis = null)
         {
             _kullaniciServis = kullaniciServis;
@@ -48,22 +51,49 @@ namespace BlogWebUI.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Guncelle(Kullanici kullanici)
+        public async Task<IActionResult> Guncelle(int KullaniciId, string KulAdSoyad, string Email, string Parola, IFormFile FotoUrl, int RolId)
         {
-            if (kullanici.FotoUrl==null)
+            string FotoAdi;
+            _resimKaydet = new ResimKaydet();
+            if (FotoUrl==null)
             {
-                kullanici.FotoUrl = "user.png";
-            }
+               var kul= _kullaniciServis.KullaniciGetir(KullaniciId);
+               FotoAdi =kul.FotoUrl;
+                if (ModelState.IsValid)
+                {
+                    Kullanici kullanici = new Kullanici
+                    {
+                        KullaniciId = KullaniciId,
+                        KulAdSoyad = KulAdSoyad,
+                        Email = Email,
+                        FotoUrl = FotoAdi,
+                        Parola = Parola,
+                        RolId = RolId
+                    };
+                    _kullaniciServis.Guncelle(kullanici);
 
-            if (ModelState.IsValid)
+                    ViewBag.GuncellendiMi = true;
+                }
+            }
+            if (FotoUrl != null)
             {
-                _kullaniciServis.Guncelle(kullanici);
-             
-                ViewBag.GuncellendiMi = true;
+                var resimUrl = _resimKaydet.Yukle(FotoUrl,"Kullanici");
+                if (ModelState.IsValid)
+                {
+                    Kullanici kullanici = new Kullanici {
+                        KullaniciId=KullaniciId,
+                        KulAdSoyad=KulAdSoyad,
+                        Email=Email,
+                        FotoUrl=resimUrl,
+                        Parola=Parola,
+                        RolId=RolId
+                        };
+                    _kullaniciServis.Guncelle(kullanici);
+
+                    ViewBag.GuncellendiMi = true;
+                }
             }
-            return RedirectToAction("index","AdminKullanici");
-
-
+            return RedirectToAction("index", "AdminKullanici");
         }
         [HttpPost]
         public IActionResult Sil(int id)

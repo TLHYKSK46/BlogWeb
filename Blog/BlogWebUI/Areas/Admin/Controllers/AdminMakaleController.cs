@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
+using BlogWebUI.Areas.Admin.Helper;
 using BlogWebUI.Areas.Admin.Models;
+using BlogWebUI.TagHelpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +19,7 @@ namespace BlogWebUI.Areas.Admin.Controllers
     {
         IMakaleServis _makaleServis;
         IKategoriServis _kategoriServis;
+        ResimKaydet resimKaydet;
 
         public AdminMakaleController(IMakaleServis makaleServis, IKategoriServis kategoriServis)
         {
@@ -56,18 +60,30 @@ namespace BlogWebUI.Areas.Admin.Controllers
         }
       
         [HttpPost]
-        public IActionResult MakaleOlustur(string makaleBaslik, string makaleIcerik, string makaleFotoUrl, int kategoriId)
+        public async Task <IActionResult> MakaleOlustur(string makaleBaslik, string makaleIcerik, IFormFile makaleFotoUrl, int kategoriId)
         {
             var kulId = HttpContext.Session.GetInt32("id");
+            var fotourl = "";
+            resimKaydet = new ResimKaydet();
+            if (makaleFotoUrl != null)
+            {
+               //fotourl = resimKaydet.Makale(makaleFotoUrl);
+                fotourl = resimKaydet.Yukle(makaleFotoUrl,"Makale");
+            }
+            else {
+                fotourl = "resim1.jpg";
+            
+            }
+           
            
             if (!makaleBaslik.Equals(null) && !makaleIcerik.Equals(null) && !kategoriId.Equals(null) && !kulId.Equals(null))
-            {
-                Makale makale = new Makale
+                {
+                 Makale makale = new Makale
                 {
                     KategoriId = kategoriId,
                     KullaniciId = Convert.ToInt32(kulId),
                     MakaleBaslik = makaleBaslik,
-                    MakaleFotoUrl = makaleFotoUrl,
+                    MakaleFotoUrl =fotourl ,
                     MakaleIcerik = makaleIcerik,
                     MakaleOkunmaSayisi = 0,
                     MakaleYayinlanmaTarihi = DateTime.Now
@@ -97,6 +113,7 @@ namespace BlogWebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 var mak = _makaleServis.MakaleGetir(makale.MakaleId);
                 makale.MakaleOkunmaSayisi = mak.MakaleOkunmaSayisi;
                 makale.KullaniciId = mak.KullaniciId;

@@ -2,46 +2,31 @@
 @{
 }
 @{
+  
+
+
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">Yeni Kategori Ekle</h3>
         </div>
-        <div class="panel-body ">
+        <div class="panel-body">
             @Html.ActionLink(" Geri", "index", "AdminKategori", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
             <br />
+            <form enctype="multipart/form-data" method="post"  action="/Admin/AdminKategori/KategoriOlustur">
+<br />
+                <div class="form-group">
+                    <input type="text" class="form-control" name="KategoriAdi" placeholder="Kategori Adı " />
+                    <br />
+                    @*<input type="text" class="form-control" name="KategoriAciklama" placeholder="Kategori Açıklama" />*@
+                    <textarea class="form-control" name="KategoriAciklama" placeholder="Kategori Açıklama" rows="3"></textarea>
+                    <br />
 
-            @using (Html.BeginForm("KategoriOlustur", "AdminKategori", new { @area = "Admin", @class = "form-control" }, FormMethod.Post))
-            {
-                @*<img src="~/images/KulFoto/@Model" class="img-circle" width="128" height="128" style="margin-bottom:10px;" />
+                    <input type="file" class="form-control" name="KategoriImg" />
+                    <br />
 
-            <input type="file" class="form-control">
-            <br />*@
-
-                @*@Html.ValidationSummary(true)*@
-                <br />
-
-                @Html.TextBox("KategoriAdi", "", new { @class = "form-control", @placeholder = "Kategori Adı " })
-                <br>
-                @Html.TextArea("KategoriAciklama", "", new { @class = "form-control", @placeholder = "Kategori Açıklama" })
-                <br>
-                <input type="file" name="KategoriImg" class="form-control">
-                <br>
-
-
-                <br>
-
-                <button type="submit" class="btn btn-primary btn-lg ">Kaydet</button>
-                @*<button type="submit" name="id" value="@Model.Kullanici.KullaniciId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </button>*@
-
-            }
-            @if (ViewBag.GuncellendiMi == true)
-            {
-                @Html.Label("Başarıyla eklendi!")
-                <button type="button" class="btn btn-success btn-toastr" data-context="success" data-message="Başarıyla Güncellendi" data-position="top-right">Succ</button>
-            }
+                    <input type="submit" class="btn btn-primary btn-lg " />
+                </div>
+            </form>
         </div>
     </div>
-
 }

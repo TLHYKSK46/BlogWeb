@@ -877,9 +877,6 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\BlogEntities.pdb
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.csprojAssemblyReference.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.AssemblyInfoInputs.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.AssemblyInfo.cs
-D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.csproj.CoreCompileInputs.cache
-D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cs
-D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.RazorAssemblyInfo.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.RazorAssemblyInfo.cs
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.TagHelpers.input.cache
@@ -922,3 +919,7 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.pdb
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.genruntimeconfig.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminKategori\KategoriOlustur.cshtml.g.cs
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminMakale\Guncelle.cshtml.g.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dll
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.csproj.CoreCompileInputs.cache
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cache

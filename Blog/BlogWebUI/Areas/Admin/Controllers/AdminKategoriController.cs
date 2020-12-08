@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
+using BlogWebUI.Areas.Admin.Helper;
 using BlogWebUI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
@@ -15,10 +19,12 @@ namespace BlogWebUI.Areas.Admin.Controllers
     public class AdminKategoriController : Controller
     {
         IKategoriServis _kategoriServis;
-
-        public AdminKategoriController(IKategoriServis kategoriServis)
+        private readonly IFileProvider _fileProvider;
+      ResimKaydet _resimKaydet;
+        public AdminKategoriController(IKategoriServis kategoriServis, IFileProvider fileProvider)
         {
             _kategoriServis = kategoriServis;
+            _fileProvider = fileProvider;
         }
 
         public IActionResult Index()
@@ -36,42 +42,33 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
             return View();
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult KategoriOlustur(Kategori kategori)
+        public string Upload(IFormFile file)
         {
-            var files = HttpContext.Request.Form.Files;
-            if (Request.Form.Files.Count>0)
-            {
-                //string dosyaAdi = Path.GetFileName(Request.Form.Files[0].FileName);
-                //string uzanti = Path.GetExtension(Request.Form.Files[0].FileName);
-                //string yol = "~/wwwroot/images/KategoriFoto/" + dosyaAdi + uzanti;
-                //Request.Form.Files[0].ToString(yol);
-
-            }
-
-            //if (file != null)
-            //{
-            //    string imageExtension = Path.GetExtension(file.FileName);
-
-            //    string imageName = Guid.NewGuid() + imageExtension;
-
-            //    string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/images/KategoriFoto/{imageName}");
-
-            //    using var stream = new FileStream(path, FileMode.Create);
-            //    file.CopyTo(stream);
-            //    //await file.CopyToAsync(stream);
-            //}
-
+            
+            return "";
+        }
+        [HttpPost]
+        public async Task<IActionResult> KategoriOlustur(string KategoriAdi, string KategoriAciklama, IFormFile KategoriImg)
+        {
             if (ModelState.IsValid)
             {
-                if (kategori.KategoriAdi!=null)
-                {
-                    _kategoriServis.Ekle(kategori);
-                    ViewBag.eklendiMi = true;
-                }
-               
 
+                 _resimKaydet = new ResimKaydet();
+                   var resim=_resimKaydet.Yukle(KategoriImg,"Kategori");
+
+                    if (KategoriAdi != null)
+                    {
+                        Kategori kategori = new Kategori
+                        {
+                            KategoriAdi = KategoriAdi,
+                            KategoriAciklama = KategoriAciklama,
+                            KategoriImg =resim
+                        };
+                        _kategoriServis.Ekle(kategori);
+                        ViewBag.eklendiMi = true;
+                    }
             }
             return RedirectToAction("index", "AdminKategori");
         }
@@ -82,6 +79,10 @@ namespace BlogWebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (id==null)
+                {
+                    ViewBag.silindiMi = false;
+                }
                 _kategoriServis.Sil(id);
                 ViewBag.silindiMi = true;
             }
