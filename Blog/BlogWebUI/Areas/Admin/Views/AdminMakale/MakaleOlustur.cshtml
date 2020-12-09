@@ -15,7 +15,7 @@
         <form enctype="multipart/form-data" method="post" action="/Admin/AdminMakale/MakaleOlustur">
             <br />
             <div class="form-group">
-                <input type="text" class="form-control" name="MakaleBaslik" placeholder="Makale Başlik " />
+                <input type="text" class="form-control" name="MakaleBaslik" placeholder="Makale Başlik" />
                 <br />
                 @*<input type="text" class="form-control" name="KategoriAciklama" placeholder="Kategori Açıklama" />*@
                 <input type="file" class="form-control" name="makaleFotoUrl" />
@@ -35,35 +35,35 @@
             </div>
         </form>
     </div>
+</div>
+<!-- INPUTS
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Makale Oluştur</h3>
     </div>
-        <!-- INPUTS -->
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Makale Oluştur</h3>
-            </div>
-            <div class="panel-body">
-                @Html.ActionLink(" Geri", "index", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
-                <br />
-                @using (Html.BeginForm("MakaleOlustur", "AdminMakale", new { area = "admin", @class = "form-control" }, FormMethod.Post))
-                {
-                    @Html.ValidationSummary(true)
-                    <br />
-                    @Html.TextBox("MakaleBaslik", "", new { @class = "form-control", @placeholder = "Makale Başlığı" })
-                    <br>
-                    <input type="file" class="form-control">
-                    <br>
+    <div class="panel-body">
+        @*@Html.ActionLink(" Geri", "index", "AdminMakale", new { @controller = "AdminMakale" }, new { @class = "fa fa-chevron-left btn btn-info", })
+        <br />
+        @using (Html.BeginForm("MakaleOlustur", "AdminMakale", new { area = "admin", @class = "form-control" }, FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <br />
+            @Html.TextBox("MakaleBaslik", "", new { @class = "form-control", @placeholder = "Makale Başlığı" })
+            <br>
+            <input type="file" class="form-control">
+            <br>
 
-                    @Html.DropDownList("KategoriId", Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @class = "dropdown form-control" })
-                    @*@Html.DropDownListFor(m => m.SelectedKatId, Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @SelectListItem = "Kategori", @Id = "KategoriId", @class = "dropdown form-control" })*@
-        
-                    <br>
+            @Html.DropDownList("KategoriId", Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @class = "dropdown form-control" })
+            @Html.DropDownListFor(m => m.SelectedKatId, Model.SelectedKatData, "Lütfen Bir Kategori Seçiniz", new { @SelectListItem = "Kategori", @Id = "KategoriId", @class = "dropdown form-control" })
 
-                    @Html.TextArea("MakaleIcerik", "", new { @class = "form-control", @placeholder = "Makale İçeriği", @rows = 10 })
+            <br>
 
-                    <br>
-                    <button type="submit" class="btn btn-primary btn-lg  ">Yayınla</button>
+            @Html.TextArea("MakaleIcerik", "", new { @class = "form-control", @placeholder = "Makale İçeriği", @rows = 10 })
 
-                }
-            </div>
-        </div>
-        <!-- END INPUTS -->
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg  ">Yayınla</button>
+
+        }*@
+    </div>
+</div>-->
+<!-- END INPUTS -->

@@ -69,10 +69,11 @@ namespace BlogWebUI
             services.AddScoped<IIletisimServis, IletisimYonetici>();
             services.AddScoped<IIletisimDal, EfIletisimDal>();
 
-
-
             services.AddScoped<IRolServis, RolYonetici>();
             services.AddScoped<IRolDal, EfRolDal>();
+
+            services.AddScoped<IBildirimServis, BildirimYonetici>();
+            services.AddScoped<IBildirimDal, EfBildirimDal>();
 
             //services.AddEntityFrameworkNpgsql().AddDbContext<MyWebApiContext>(opt =>
             //opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConection"));

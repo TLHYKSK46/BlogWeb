@@ -51,20 +51,10 @@
                 
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                <i class="lnr lnr-alarm"></i>
-                                <span class="badge bg-danger">5</span>
-                            </a>
-                            <ul class="dropdown-menu notifications">
-                                <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
-                                <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
-                                <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
-                                <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
-                                <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
-                                <li><a href="#" class="more">See all notifications</a></li>
-                            </ul>
-                        </li>
+
+                        @await Component.InvokeAsync("Bildirim")
+
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                             <ul class="dropdown-menu">
@@ -74,8 +64,11 @@
                                 <li><a href="#">Troubleshooting</a></li>
                             </ul>
                         </li>
-                        @await Component.InvokeAsync("UserSummer")
-                      
+                     
+                            @await Component.InvokeAsync("UserSummer")
+
+                     
+
                     </ul>
                 </div>
             </div>
@@ -90,7 +83,7 @@
                         <li><a href="~/Admin/AdminMakale" class=""><i class="lnr lnr-pencil"></i> <span>Makale</span></a></li>
                         <li><a href="~/Admin/AdminKategori" class=""><i class="lnr lnr-bookmark"></i> <span>Kategori</span></a></li>
                         <li><a href="~/Admin/AdminKullanici" class=""><i class="lnr lnr-users"></i> <span>Kullanıcılar</span></a></li>
-                        <li><a href="notifications.html" class=""><i class="lnr lnr-envelope"></i> <span>Mail</span></a></li>
+                        <li><a href="~/Admin/AdminBildirim" class=""><i class="lnr lnr-envelope"></i> <span>Bildirimler</span></a></li>
                         <li>
                             <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="subPages" class="collapse ">

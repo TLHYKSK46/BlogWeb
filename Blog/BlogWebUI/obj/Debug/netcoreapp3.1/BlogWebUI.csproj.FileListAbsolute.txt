@@ -923,3 +923,5 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\SixLabors.ImageSharp.dl
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.csproj.CoreCompileInputs.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cs
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Components\Bildirim\Default.cshtml.g.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminBildirim\Index.cshtml.g.cs

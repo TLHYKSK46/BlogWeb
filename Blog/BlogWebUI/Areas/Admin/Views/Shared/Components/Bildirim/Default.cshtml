@@ -1,0 +1,129 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminBildirimViewModel
+  <li class="dropdown">
+                            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                <i class="lnr lnr-alarm"></i>
+                                <span class="badge bg-danger">
+                                    @{ int say = 0;string sayi = "";}
+                                    @foreach (var item in Model.Bildirimler)
+                                    {
+                                        if (item.Okundumu == false)
+                                        {
+                                            say = say + 1;
+
+                                        }
+
+                                    }
+                                    @if (say > 5)
+                                    {
+                                        
+                                        sayi ="5+";
+                                        @sayi
+                                    }
+                                    else
+                                    {
+                                        @say
+
+                                    }
+                                </span>
+                            </a>
+<ul class="dropdown-menu notifications">
+    @foreach (var item in Model.Bildirimler.OrderByDescending(x=>x.GondermeTarihi).Take(5))
+    {
+        if (item.Gonderilen == Model.KulId)
+        {
+            if (item.Okundumu == false)
+            {
+                 <li>
+                     <a href="#" class="notification-item">
+
+                         <span class="">
+                             @foreach (var kul in Model.Kullanicilar)
+                             {
+                                 if (kul.KullaniciId == item.Gonderen)
+                                 {
+                                     <img src="~/images/KulFoto/@kul.FotoUrl" width="24" height="24" class="img-circle" />
+                                     @kul.KulAdSoyad
+                                 }
+                             }
+                         </span>
+                         @if (item.GondermeTarihi.ToShortDateString() == DateTime.Now.ToShortDateString())
+                         {
+                             <span class="text-right" style="font-size:11px;">@item.GondermeTarihi.ToLongTimeString()</span>
+
+                         }
+                         else
+                         {
+                             <span class="text-right text-center right"style="font-size:11px;">@item.GondermeTarihi.ToShortDateString()</span>
+
+                         }
+                         <br />
+                         @if (item.Mesaj.Length > 30)
+                         {
+                             @item.Mesaj.Substring(0, 30)
+                             <span class="dot bg-danger right"></span>
+
+                         }
+                         else
+                         {
+                             @item.Mesaj
+                             <span class="dot  bg-danger"></span>
+                         }
+                     </a>
+
+                  </li>
+            }
+            else
+            {
+                <li>
+                    <a href="#" class="notification-item">
+                        <span class="">
+                            @foreach (var kul in Model.Kullanicilar)
+                            {
+                                if (kul.KullaniciId == item.Gonderen)
+                                {
+                                    <img src="~/images/KulFoto/@kul.FotoUrl" width="24" height="24" class="img-circle" />
+                                    @kul.KulAdSoyad
+                                }
+                            }
+                        </span>
+                        @if (item.GondermeTarihi.ToShortDateString() == DateTime.Now.ToShortDateString())
+                        {
+                            <span class="text-right" style="font-size:11px;">@item.GondermeTarihi.ToLongTimeString()</span>
+
+                        }
+                        else
+                        {
+                            <span class="text-right text-center right" style="font-size:11px;">@item.GondermeTarihi.ToShortDateString()</span>
+
+                        }
+                        <br />
+                        @if (item.Mesaj.Length > 30)
+                        {
+
+                            @item.Mesaj.Substring(0, 30)
+                            <span class="dot  bg-transparent"></span>
+
+                        }
+                        else
+                        {
+                            @item.Mesaj
+                            <span class="dot bg-transparent"></span>
+
+
+                        }
+
+                    </a>
+                </li>
+            }
+
+
+        }
+    }
+    @*<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+        <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+        <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+        <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+        <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>*@
+    <li><a href="#" class="more">Tüm Bildirimleri Görüntüle</a></li>
+</ul>
+</li>

@@ -73,7 +73,9 @@
                     @using (Html.BeginForm("Guncelle", "AdminMakale", new { enctype = "multipart/form-data" }, FormMethod.Get))
                     {
                 <td style="text-align:right;">
-                    <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning fa fa-pencil-square-o btn-sm ">
+                    <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("Guncelle") formmethod="get" class="btn btn-warning  btn-sm ">
+                        <span class="fa fa-pencil-square-o"></span>
+
                     </button>
                     @*<button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>*@
                     <button type="submit" name="id" value="@item.MakaleId" formaction=@Url.Action("MakaleSil") formmethod="post" class="btn btn-danger btn-sm">

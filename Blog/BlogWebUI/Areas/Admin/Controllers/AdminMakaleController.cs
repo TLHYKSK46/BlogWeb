@@ -29,6 +29,13 @@ namespace BlogWebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            var rolid = HttpContext.Session.GetInt32("rolid");
+            var id = HttpContext.Session.GetInt32("id");
+            if (rolid == null || id == null)
+            {
+                RedirectToAction("index", "AdminGiris");
+            }
+         
             var makaleler = _makaleServis.MakaleleriGetir();
             var kategoriler = _kategoriServis.KategorileriGetir();
             SelectList datacombo = new SelectList(kategoriler, "KategoriId", "KategoriAdi");
@@ -36,8 +43,8 @@ namespace BlogWebUI.Areas.Admin.Controllers
             {
                 Kategoriler = kategoriler,
                 Makaleler = makaleler,
-                RolId = (int)HttpContext.Session.GetInt32("rolid"),
-                KulId = (int)HttpContext.Session.GetInt32("id"),
+                RolId =Convert.ToInt32(rolid),
+                KulId =Convert.ToInt32(id),
              
 
             };
@@ -109,16 +116,44 @@ namespace BlogWebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Guncelle(Makale makale)
+        public IActionResult Guncelle(int MakaleId,string makaleBaslik, string makaleIcerik, IFormFile makaleFotoUrl, int kategoriId)
         {
+            var kulId = HttpContext.Session.GetInt32("id");
+            var fotourl = "";
+            resimKaydet = new ResimKaydet();
+            if (makaleFotoUrl != null)
+            {
+                //fotourl = resimKaydet.Makale(makaleFotoUrl);
+                fotourl = resimKaydet.Yukle(makaleFotoUrl, "Makale");
+            }
+            else
+            {
+                fotourl = "resim1.jpg";
+
+            }
             if (ModelState.IsValid)
             {
                 
-                var mak = _makaleServis.MakaleGetir(makale.MakaleId);
-                makale.MakaleOkunmaSayisi = mak.MakaleOkunmaSayisi;
-                makale.KullaniciId = mak.KullaniciId;
-                makale.MakaleId = mak.MakaleId;
-                makale.MakaleYayinlanmaTarihi = mak.MakaleYayinlanmaTarihi;
+                var mak = _makaleServis.MakaleGetir(MakaleId);
+                int MakaleOkunmaSayisi = mak.MakaleOkunmaSayisi;
+                int KullaniciId = mak.KullaniciId;
+                MakaleId = mak.MakaleId;
+                DateTime  MakaleYayinlanmaTarihi = mak.MakaleYayinlanmaTarihi;
+
+                Makale makale = new Makale {
+                KategoriId=kategoriId,
+                KullaniciId=KullaniciId,
+                MakaleBaslik=makaleBaslik,
+                 MakaleFotoUrl=fotourl,
+                 MakaleIcerik=makaleIcerik,
+                 MakaleId=MakaleId,
+                 MakaleOkunmaSayisi=MakaleOkunmaSayisi,
+                 MakaleYayinlanmaTarihi=MakaleYayinlanmaTarihi
+                
+                
+                };
+
+
                 _makaleServis.Guncelle(makale);
                 ViewBag.guncellendiMi = true;
             }

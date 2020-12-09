@@ -39,6 +39,10 @@ namespace BlogWebUI.Areas.Admin.ViewComponents
             Email = HttpContext.Session.GetString("email");
             RolId = (int)HttpContext.Session.GetInt32("rolid");
             FotoUrl = HttpContext.Session.GetString("fotourl");
+            if (AdSoyad==null ||Email==null|| RolId==null||FotoUrl==null)
+            {
+                
+            }
             AdminUserSummerViewCompenentModel model = new AdminUserSummerViewCompenentModel
             {
                 AdSoyad = AdSoyad,

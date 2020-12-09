@@ -28,6 +28,7 @@ namespace BlogDataAccess.Concreate.EntityFramework
         public DbSet<Hakkimda> Hakkimda { get; set; }
         public DbSet<Referans> Referanslar { get; set; }
         public DbSet<Iletisim> Iletisim { get; set; }
+        public DbSet<Bildirim> Bildirimler { get; set; }
 
 
 
