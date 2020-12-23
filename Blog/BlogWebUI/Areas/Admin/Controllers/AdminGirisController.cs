@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
+using BlogWebUI.Areas.Admin.Attributes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,12 @@ namespace BlogWebUI.Areas.Admin.Controllers
     public class AdminGirisController : Controller
     {
         IKullaniciServis _kullaniciServis;
+        //private GirisBilgisi _girisBiligisi=new GirisBilgisi();
 
         public AdminGirisController(IKullaniciServis kullaniciServis)
         {
             _kullaniciServis = kullaniciServis;
+          
         }
 
         public IActionResult Index()
@@ -45,16 +48,26 @@ namespace BlogWebUI.Areas.Admin.Controllers
                     HttpContext.Session.SetString("email", item.Email);
                     HttpContext.Session.SetString("fotourl", item.FotoUrl);
                     HttpContext.Session.SetInt32("rolid", item.RolId);
+                //    List<GirisBilgisi> _girisBilgisi = new List<GirisBilgisi>();
+                //    _girisBilgisi.Add(new GirisBilgisi() {
 
+                //       Id = item.KullaniciId,
+                //    RolId = item.RolId,
+                //    Email = item.Email,
+                //   FotoUrl = item.FotoUrl,
+                //    Adsoyad = item.KulAdSoyad
 
+                //});
+                    //_girisBilgisi.Id = item.KullaniciId;
+                    //_girisBilgisi.RolId = item.RolId;
+                    //_girisBilgisi.Email = item.Email;
+                    //_girisBilgisi.FotoUrl = item.FotoUrl;
+                    //_girisBilgisi.Adsoyad = item.KulAdSoyad;
 
                     return RedirectToAction("index", "AdminHome");
-
                 }
                 else
                 {
-
-
                 }
             }
 
@@ -78,7 +91,6 @@ namespace BlogWebUI.Areas.Admin.Controllers
                     sonuc = true;
                 }
             }
-
             if (email != null && parola != null && adsoyad != null && sonuc == false)
             {
                 Kullanici kullanici = new Kullanici
@@ -90,16 +102,18 @@ namespace BlogWebUI.Areas.Admin.Controllers
                     FotoUrl = fotoUrl
 
                 };
-
-
-
                 _kullaniciServis.Ekle(kullanici);
                 return RedirectToAction("index", "AdminGiris");
-
             }
             return RedirectToAction("KayitOl", "AdminGiris");
-
-
         }
+
+        public IActionResult OturumKapat() {
+
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("index", "AdminGiris");
+        }
+
     }
 }

@@ -26,9 +26,9 @@ namespace BlogBusiness.Concreate
             _kategoriDal.Guncelle(kategori);
         }
 
-        public List<Kategori> KategoriGetir(int KategoriId)
+        public Kategori KategoriGetir(int KategoriId)
         {
-            return _kategoriDal.ListeGetir(p => p.KategoriId == KategoriId);
+            return _kategoriDal.Getir(p => p.KategoriId == KategoriId);
 
         }
 

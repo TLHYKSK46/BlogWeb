@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BlogBusiness.Abstract;
 using BlogEntities.Concreate;
 using BlogWebUI.Areas.Admin.Helper;
 using BlogWebUI.Areas.Admin.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 
 namespace BlogWebUI.Areas.Admin.Controllers
 {
+
     [Area("admin")]
     public class AdminKategoriController : Controller
     {

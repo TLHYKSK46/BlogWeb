@@ -461,7 +461,6 @@ D:\GitHub\BlogWebs\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\View
 D:\GitHub\BlogWebs\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\appsettings.json
-D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\log4net.config
 D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\BlogWebUI.exe
 D:\GitHub\BlogWeb\Blog\BlogWebUI\bin\Debug\netcoreapp3.1\BlogWebUI.deps.json
@@ -925,3 +924,5 @@ D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicatio
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\BlogWebUI.MvcApplicationPartsAssemblyInfo.cache
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Components\Bildirim\Default.cshtml.g.cs
 D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminBildirim\Index.cshtml.g.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminBildirim\BildirimDetay.cshtml.g.cs
+D:\GitHub\BlogWeb\Blog\BlogWebUI\obj\Debug\netcoreapp3.1\scopedcss\bundle\BlogWebUI.styles.css

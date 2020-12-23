@@ -1,0 +1,12 @@
+﻿.speech {
+    position: relative;
+    font-family: arial;
+    white-space: nowrap;
+    background: #a53d38;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 400px;
+    resize:both;
+    overflow-wrap:break-word;
+}

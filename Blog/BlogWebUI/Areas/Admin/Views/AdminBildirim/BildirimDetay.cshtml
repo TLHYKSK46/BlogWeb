@@ -1,0 +1,106 @@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminBildirimViewModel
+@{
+
+    <!-- TIMELINE -->
+<div class="panel col-md-12" style="height:600px;">
+   
+    <div class="panel-body col-md-5 " style="border-right:1px solid;">
+             <ul class="list-unstyled activity-list">
+                @foreach (var item in Model.Bildirimler)
+                {
+                    if (item.Tur == "Mesaj")
+                    {
+                <li>
+                    @foreach (var kul in Model.Kullanicilar)
+                    {
+                        if (kul.KullaniciId == item.Gonderen)
+                        {
+                            <img src="~/images/KulFoto/@kul.FotoUrl" alt="Avatar" class="img-circle pull-left avatar">
+                            <p>
+                                <a href="#"> <span></span>@kul.KulAdSoyad</a>
+                                <br />
+                                @if (item.Mesaj.Length > 50)
+                                {
+                                    @item.Mesaj.Substring(0, 50)
+
+                                }
+                                else {@item.Mesaj }
+                                <span class="timestamp bottom-right text-right">
+                                    <span class="" style="margin-right:10px;"><i class="fa fa-envelope-o"></i>&nbsp; @item.Mail</span>
+                                    <span class=""><i class="lnr lnr-clock"></i>&nbsp; @item.GondermeTarihi.ToLongDateString()</span>
+                                </span>
+                            </p>
+                        }
+                    }
+                </li>
+                    }
+
+                }
+            </ul>
+
+    </div>
+    <div class="panel-body col-md-7">
+        <div class="panel-heading bg-primary">
+            <h2 class="panel-title" style="vertical-align:auto;">
+                @foreach (var item in Model.Kullanicilar)
+                {
+                    if (Model.Bildirim.Gonderen == item.KullaniciId)
+                    {
+                        <img src="~/images/KulFoto/@item.FotoUrl" alt="Avatar" width="32" height="32" class="img-circle pull-left avatar">
+                        <span style="margin-left:10px;">
+                            @item.KulAdSoyad
+                        </span>
+                    }
+
+                }
+            </h2>
+        </div>
+
+        <div  class="content  bottom-right"style="">
+            <ul class="notifications text-decoration-none">
+
+                @foreach (var item in Model.Bildirimler)
+                {
+                    string[] metin;
+                    @if (item.Gonderilen == Model.Bildirim.Gonderilen)
+                    {
+                <li class="col-md-7 text-decoration-none">
+                    <div class="speech">
+                        @item.Mesaj
+
+
+                        @*@{metin = @item.Mesaj.Split(" ");
+                            foreach (var i in metin)
+                            {
+                                @i <br />
+
+                            }
+
+
+                        }*@
+                    </div>
+                    </li><br />
+                    }
+                    else if (item.Gonderen == Model.Bildirim.Gonderen)
+                    {
+
+
+                    }
+
+
+                }
+
+            </ul>
+        </div>
+
+        <div class="panel-footer bottom">
+            f3fg3g
+        </div>
+
+    </div>
+  
+</div>
+
+
+
+            }

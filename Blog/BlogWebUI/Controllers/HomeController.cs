@@ -108,8 +108,9 @@ namespace BlogWebUI.Controllers
             var kategoriler = _kategoriServis.KategorileriGetir();
             var kullanicilar = _kullaniciServis.KullanicilariGetir();
             var seciliMakaleId = ID;
-            int makaleOkunmaSayisi = makale.MakaleOkunmaSayisi;
-            makaleOkunmaSayisi+= 1;
+            makale.MakaleOkunmaSayisi += 1;
+            //int makaleOkunmaSayisi = makale.MakaleOkunmaSayisi;
+            //    makaleOkunmaSayisi+= 1;
             _makaleServis.Guncelle(makale);
             MakaleListViewModel model = new MakaleListViewModel
             {

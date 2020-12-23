@@ -110,7 +110,7 @@
                                     </span>&nbsp;
 
                                     <span>
-                                        <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>@*.ToString("dddd, dd MMMM yyyy")*@
+                                        <i class="fa fa-calendar fa-lg " aria-hidden="true"></i>@*.ToString("dddd, dd MMMM yyyy")*@
                                         @Html.DisplayFor(modelitem => item.MakaleYayinlanmaTarihi)
                                     </span>&nbsp;
 
@@ -129,10 +129,10 @@
                     <a class="page-link" href="#">Sonraki &rarr;</a>
                 </li>
             </ul>*@
-            <makale-list-sayfa secili-kategori="@Model.SeciliKategori"
-                               secili-sayfa="@Model.SeciliSayfa"
-                               sayfa-sayisi="@Model.SayfaSayisi"
-                               sayfa-boyut="@Model.SayfaBoyut"></makale-list-sayfa>
+
+            <makale-list-sayfa secili-kategori="@Model.SeciliKategori" secili-sayfa="@Model.SeciliSayfa" sayfa-sayisi="@Model.SayfaSayisi" sayfa-boyut="@Model.SayfaBoyut"></makale-list-sayfa>
+
+          
         </div>
  
 

@@ -1,79 +1,91 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BlogWebUI.Areas.Admin.Models.AdminBildirimViewModel
 @{
 
 
     <!-- TIMELINE -->
     <div class="panel col-md-6">
         <div class="panel-heading">
-            <h2 class="panel-title">Mail</h2>
-
-        </div>
-        <div class="panel-body">
-                <ul class="list-unstyled activity-list">
-                    <li>
-                        <a href="#" class="text-decoration-none">
-                            <div class="col-md-12">
-                                <hr />
-                                <img src="~/images/KulFoto/profile.jpg" alt="Avatar" class="img-circle pull-left avatar">
-                                &nbsp; &nbsp;
-                                <span class="text-center text-dark">Adsoyad</span>
-                                <p class="text-danger"> viewreated a new heatmap viewreated a new heatmap view</p>
-                                <p class="timestamp">
-                                    <span>
-                                        <i class="lnr lnr-clock"></i> 20 minutes ago
-                                    </span>
-                                    &nbsp;
-                                    <span>
-                                        <i class="lnr lnr-clock"></i> Mail Adresi
-                                    </span>
-                                </p>
-                            </div>
-                        </a>
-                            
-                    </li>
-                  
-                   
-                </ul>
-                <button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
-        </div>
-    </div>
-    <!-- END TIMELINE -->
-    
-    <!-- TIMELINE -->
-    <div class="panel col-md-6 right">
-        <div class="panel-heading">
             <h2 class="panel-title">Mesajlarım</h2>
 
         </div>
         <div class="panel-body">
             <ul class="list-unstyled activity-list">
+                @foreach (var item in Model.Bildirimler)
+                {
+                    if (item.Tur== "Mesaj")
+                    {
                 <li>
-                    <hr />
-                    <img src="~/images/KulFoto/profile.jpg" alt="Avatar" class="img-circle pull-left avatar">
-                    <p><a href="#" class="text-decoration-none">Michael</a>
-                    <p>has achieved 80% of his completed tasks</p>
-                    <p class="timestamp"><i class="lnr lnr-clock"></i> 20 minutes ago</p></p>
-                </li>
+                    @foreach (var kul in Model.Kullanicilar)
+                    {
+                        if (kul.KullaniciId == item.Gonderen)
+                        {
+                            <img src="~/images/KulFoto/@kul.FotoUrl" alt="Avatar" class="img-circle pull-left avatar">
+                            <p>
+                                <a href="#"> <span></span>@kul.KulAdSoyad</a>
+                                <br />
+                                @if (item.Mesaj.Length > 50)
+                                {
+                                    @item.Mesaj.Substring(0, 50)
 
-                <li>
-                    <img src="~/images/KulFoto/profile.jpg" alt="Avatar" class="img-circle pull-left avatar">
-                    <p><a href="#">Daniel</a> has been added as a team member to project <a href="#">System Update</a> <span class="timestamp">Yesterday</span></p>
+                                }
+                                else
+                                {@item.Mesaj}
+                                <span class="timestamp bottom-right text-right">
+                                    <span class="" style="margin-right:10px;"><i class="fa fa-envelope-o"></i>&nbsp; @item.Mail</span>
+                                    <span class=""><i class="lnr lnr-clock"></i>&nbsp; @item.GondermeTarihi.ToLongDateString()</span>
+                                </span>
+                            </p>
+                        }
+                    }
                 </li>
+                    }
+
+                }
+
+            </ul>
+                <button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
+        </div>
+    </div>
+    <!-- END TIMELINE -->
+
+    <!-- TIMELINE -->
+    <div class="panel col-md-6 right">
+        <div class="panel-heading">
+            <h2 class="panel-title">Mail</h2>
+
+        </div>
+        <div class="panel-body">
+            <ul class="list-unstyled activity-list">
+                @foreach (var item in Model.Bildirimler)
+                {
+                    if (item.Tur == "Mail")
+                    {
                 <li>
-                    <img src="~/images/KulFoto/profile.jpg" alt="Avatar" class="img-circle pull-left avatar">
-                    <p><a href="#">Martha</a> created a new heatmap view <a href="#">Landing Page</a> 
-                    <span class="timestamp">2 days ago</span></p>
+                    @foreach (var kul in Model.Kullanicilar)
+                    {
+                        if (kul.KullaniciId == item.Gonderen)
+                        {
+                            <img src="~/images/KulFoto/@kul.FotoUrl" alt="Avatar" class="img-circle pull-left avatar">
+                            <p>
+                                <a href="#"> <span></span>@kul.KulAdSoyad</a>
+                                <br />
+                                @if (item.Mesaj.Length > 50)
+                                {
+                                    @item.Mesaj.Substring(0, 50)
+
+                                }
+                                else {@item.Mesaj }
+                                <span class="timestamp bottom-right text-right">
+                                    <span class="" style="margin-right:10px;"><i class="fa fa-envelope-o"></i>&nbsp; @item.Mail</span>
+                                    <span class=""><i class="lnr lnr-clock"></i>&nbsp; @item.GondermeTarihi.ToLongDateString()</span>
+                                </span>
+                            </p>
+                        }
+                    }
                 </li>
-                <li>
-                    <img src="~/images/KulFoto/profile.jpg" alt="Avatar" class="img-circle pull-left avatar">
-                    <p><a href="#">Jane</a> has completed all of the tasks <span class="timestamp">2 days ago</span></p>
-                </li>
-                <li>
-                    <img src="assets/img/user5.png" alt="Avatar" class="img-circle pull-left avatar">
-                    <p><a href="#">Jason</a> started a discussion about <a href="#">Weekly Meeting</a> <span class="timestamp">3 days ago</span></p>
-                </li>
+                    }
+
+                }
             </ul>
             <button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
         </div>

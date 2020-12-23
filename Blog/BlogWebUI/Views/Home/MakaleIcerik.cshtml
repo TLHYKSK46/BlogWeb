@@ -23,7 +23,7 @@
             </li>
         </ol>
                  
-        }        <div class="row">
+              <div class="row">
             @{ 
                     var kulad = (from i in Model.Kullanicilar where i.KullaniciId== Model.Makale.KullaniciId select i.KulAdSoyad).ToList();
 
